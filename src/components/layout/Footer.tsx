@@ -20,7 +20,7 @@ export function Footer() {
                         <Link href="/" className="inline-block mb-6 pt-2">
                             <div className="relative w-48 md:w-64 h-16 md:h-20">
                                 <Image
-                                    src="/logo-mtm.png"
+                                    src="/logo-mtm-healthcare.png"
                                     alt="Logo MTM Healthcare"
                                     fill
                                     className="object-contain object-left"

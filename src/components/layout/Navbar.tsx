@@ -37,7 +37,7 @@ export function Navbar() {
                     <Link href="/" className="flex-shrink-0 flex items-center gap-2.5 group pt-1">
                         <div className="relative w-44 md:w-56 h-14 md:h-16">
                             <Image
-                                src="/logo-navbar.png"
+                                src="/logo-mtm-healthcare.png"
                                 alt="Logo MTM Healthcare"
                                 fill
                                 className="object-contain object-left"
