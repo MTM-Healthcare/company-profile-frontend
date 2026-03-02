@@ -1,5 +1,5 @@
 export const siteConfig = {
-    name: 'Apotek',
+    name: 'MTM Healthcare',
     description: 'Your trusted local pharmacy for all your health and medical needs.',
     url: 'https://apotek.com',
     ogImage: 'https://apotek.com/og.jpg',

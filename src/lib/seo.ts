@@ -5,7 +5,7 @@ export function constructMetadata({
     title = siteConfig.name,
     description = siteConfig.description,
     image = siteConfig.ogImage,
-    icons = '/favicon.ico',
+    icons = '/logo-mtm-logo.png',
     noIndex = false,
 }: {
     title?: string;
@@ -17,7 +17,7 @@ export function constructMetadata({
     return {
         title: {
             default: title,
-            template: `%s | ${siteConfig.name}`,
+            template: `MTM Healthcare - %s`,
         },
         description,
         openGraph: {
