@@ -52,7 +52,7 @@ const services = [
 
 export function Services() {
     return (
-        <section id="services" className="py-24 bg-slate-50">
+        <section id="services" className="py-24 bg-transparent">
             <Container>
                 <SectionHeader
                     title="Our Premium Services"
@@ -67,7 +67,7 @@ export function Services() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: idx * 0.1 }}
-                            className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md hover:-translate-y-1 transition-all duration-300 group cursor-pointer"
+                            className="bg-white/70 backdrop-blur-sm p-8 rounded-2xl shadow-md shadow-blue-100/60 border border-white/60 hover:shadow-xl hover:shadow-blue-100 hover:-translate-y-1 transition-all duration-300 group cursor-pointer"
                         >
                             <div className={cn("inline-flex p-4 rounded-xl mb-6 transition-colors duration-300", service.bg, service.color, "group-hover:bg-primary group-hover:text-white")}>
                                 <service.icon size={28} />

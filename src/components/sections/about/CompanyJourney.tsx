@@ -55,7 +55,7 @@ export function CompanyJourney() {
                             <Image src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=600" alt="Hospital Interior" fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
                         </div>
                         <div className="rounded-3xl overflow-hidden h-48 shadow-md relative group">
-                            <Image src="https://images.unsplash.com/photo-1504439468489-c8920d786a2b?auto=format&fit=crop&q=80&w=600" alt="Hospital Bed" fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                            <Image src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=600" alt="Hospital Bed" fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
                         </div>
                     </div>
                 </motion.div>

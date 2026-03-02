@@ -23,7 +23,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="id" className="scroll-smooth">
-            <body className={`${inter.variable} ${poppins.variable} bg-gradient-to-b from-brand-blue via-white to-brand-blue font-sans text-brand-text antialiased`}>
+            <body className={`${inter.variable} ${poppins.variable} font-sans text-brand-text antialiased bg-gradient-to-r from-[#CEDFFF] via-white to-[#CEDFFF] min-h-screen`}>
                 {children}
             </body>
         </html>

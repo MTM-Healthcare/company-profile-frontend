@@ -16,8 +16,8 @@ export function AboutHero() {
                     className="md:w-1/2"
                 >
                     <h1 className="font-heading font-bold text-4xl lg:text-5xl text-brand-dark mb-4 leading-tight">
-                        Pelayanan Kesehatan <br />
-                        <span className="text-brand-red">yang Terpercaya</span>
+                        Healthcare Services <br />
+                        <span className="text-brand-red">You Can Trust</span>
                     </h1>
                     <p className="text-sm text-gray-500 mb-8 leading-relaxed max-w-lg">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -26,18 +26,18 @@ export function AboutHero() {
                     <div className="flex gap-12 mb-8">
                         <div>
                             <h2 className="font-heading font-bold text-4xl text-brand-dark">100+</h2>
-                            <p className="text-[10px] text-gray-400 font-medium uppercase mt-1 max-w-[120px]">Pegawai & tenaga medis berpengalaman</p>
+                            <p className="text-[10px] text-gray-400 font-medium uppercase mt-1 max-w-[120px]">Experienced staff & medical personnel</p>
                         </div>
                         <div>
                             <h2 className="font-heading font-bold text-4xl text-brand-dark">25</h2>
-                            <p className="text-[10px] text-gray-400 font-medium uppercase mt-1 max-w-[120px]">Klinik tersebar di seluruh Indonesia</p>
+                            <p className="text-[10px] text-gray-400 font-medium uppercase mt-1 max-w-[120px]">Clinics spread across Indonesia</p>
                         </div>
                     </div>
 
                     <div className="flex flex-wrap gap-4 text-xs font-medium text-gray-500">
-                        <div className="flex items-center gap-1.5"><CheckCircle className="text-green-500" size={14} /> Poli Kebidanan</div>
-                        <div className="flex items-center gap-1.5"><CheckCircle className="text-green-500" size={14} /> Poli Kandungan</div>
-                        <div className="flex items-center gap-1.5"><CheckCircle className="text-green-500" size={14} /> Poli Anak</div>
+                        <div className="flex items-center gap-1.5"><CheckCircle className="text-green-500" size={14} /> Obstetrics Clinic</div>
+                        <div className="flex items-center gap-1.5"><CheckCircle className="text-green-500" size={14} /> Gynecology Clinic</div>
+                        <div className="flex items-center gap-1.5"><CheckCircle className="text-green-500" size={14} /> Pediatric Clinic</div>
                     </div>
                 </motion.div>
 
@@ -49,7 +49,7 @@ export function AboutHero() {
                     className="md:w-1/2 relative w-full mt-12 md:mt-0"
                 >
                     <div className="relative rounded-[2.5rem] overflow-hidden w-full max-w-md mx-auto aspect-[4/5] shadow-2xl">
-                        <Image src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=800" alt="Pelayanan Perawat" fill className="object-cover" />
+                        <Image src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=800" alt="Nursing Service" fill className="object-cover" />
                     </div>
 
                     {/* Floating Card 1 */}

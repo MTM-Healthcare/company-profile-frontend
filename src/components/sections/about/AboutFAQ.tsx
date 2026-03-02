@@ -81,7 +81,7 @@ export function AboutFAQ() {
                     <div className="relative w-full h-[400px] rounded-tl-[3rem] rounded-br-[3rem] overflow-hidden shadow-lg">
                         <Image
                             src="https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?auto=format&fit=crop&q=80&w=800"
-                            alt="Gedung Rumah Sakit"
+                            alt="Hospital Building"
                             fill
                             className="object-cover"
                         />

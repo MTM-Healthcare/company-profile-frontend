@@ -30,7 +30,7 @@ const features = [
 
 export function WhyChooseUs() {
     return (
-        <section className="py-24 bg-white overflow-hidden">
+        <section className="py-24 bg-transparent overflow-hidden">
             <Container>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
@@ -50,7 +50,7 @@ export function WhyChooseUs() {
                         <div className="space-y-8">
                             {features.map((feature, idx) => (
                                 <div key={idx} className="flex gap-4">
-                                    <div className="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-slate-50 border border-slate-100 text-primary">
+                                    <div className="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-white/70 backdrop-blur-sm border border-blue-100 text-primary shadow-sm">
                                         <feature.icon size={28} />
                                     </div>
                                     <div>

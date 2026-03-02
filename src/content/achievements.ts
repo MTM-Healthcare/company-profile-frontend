@@ -4,7 +4,7 @@ export const achievementsConfig = {
     items: [
         {
             id: 1,
-            image: 'https://images.unsplash.com/photo-1582750433449-648ed127d0f8?w=800&q=80',
+            image: 'https://images.unsplash.com/photo-1584308666744-24d5e4a781b4?w=800&q=80',
             text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
         },
         {
