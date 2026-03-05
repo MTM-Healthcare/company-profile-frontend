@@ -10,14 +10,10 @@ export function Newsletter() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="bg-white/70 backdrop-blur-sm rounded-3xl px-8 md:px-16 py-12 text-center shadow-xl shadow-blue-100/60 border border-white/60"
+                className="px-8 md:px-16 py-12 text-center"
             >
-                <div className="inline-flex items-center gap-2 bg-blue-100/80 backdrop-blur-sm text-blue-700 text-xs font-semibold tracking-wider uppercase px-4 py-1.5 rounded-full mb-4">
-                    <Send size={13} />
-                    Newsletter
-                </div>
                 <h2 className="font-heading font-bold text-4xl text-brand-dark mb-3">Our Newsletters</h2>
-                <p className="text-base text-gray-500 mb-8 max-w-md mx-auto leading-relaxed">
+                <p className="text-base mb-8 max-w-md mx-auto leading-relaxed">
                     Get the latest health information, tips, and service promos directly to your email.
                 </p>
 
@@ -25,7 +21,7 @@ export function Newsletter() {
                     <input
                         type="email"
                         placeholder="Enter your email"
-                        className="w-full pl-6 pr-36 py-4 rounded-full bg-white/80 border border-blue-100 focus:border-blue-300 focus:ring-4 focus:ring-blue-50 outline-none shadow-sm text-sm transition-all text-brand-dark placeholder:text-gray-400"
+                        className="w-full pl-6 pr-36 py-4 rounded-full bg-white/80 border-2 border-gray-300 focus:border-blue-500 focus:ring-4 focus:ring-blue-100 outline-none shadow-sm text-sm transition-all text-brand-dark placeholder:text-gray-400"
                         required
                     />
                     <button
@@ -35,7 +31,7 @@ export function Newsletter() {
                         Subscribe
                     </button>
                 </form>
-                <p className="text-xs text-gray-400 mt-4">We respect your privacy. No spam.</p>
+                <p className="text-s mt-4">We respect your privacy. No spam.</p>
             </motion.div>
         </section>
     );

@@ -18,9 +18,9 @@ export function Footer() {
                     {/* Logo & About */}
                     <div className="col-span-1 md:col-span-1">
                         <Link href="/" className="inline-block mb-6 pt-2">
-                            <div className="relative w-48 md:w-64 h-16 md:h-20">
+                            <div className="relative w-48 md:w-80 h-32 md:h-32">
                                 <Image
-                                    src="/logo-mtm-healthcare.png"
+                                    src="/logo-mtm.png"
                                     alt="Logo MTM Healthcare"
                                     fill
                                     className="object-contain object-left"

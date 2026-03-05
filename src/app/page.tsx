@@ -2,7 +2,8 @@ import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { Hero } from '@/components/sections/Hero';
 import { About } from '@/components/sections/About';
-import { DoctorHighlight } from '@/components/sections/DoctorHighlight';
+import { CompanyJourney } from '@/components/sections/CompanyJourney';
+import { ProductsSlider } from '@/components/sections/ProductsSlider';
 import { EventsSlider } from '@/components/sections/EventsSlider';
 import { Achievements } from '@/components/sections/Achievements';
 import { Projects } from '@/components/sections/Projects';
@@ -25,7 +26,8 @@ export default function Home() {
 
                 {/* Pair 1 — Normal (white) */}
                 <About />
-                <DoctorHighlight />
+                <CompanyJourney />
+                <ProductsSlider />
 
                 {/* Pair 2 — Highlighted */}
                 <div className="w-full relative overflow-hidden mt-32 pb-16">
@@ -43,7 +45,6 @@ export default function Home() {
                 </div>
 
                 {/* Pair 3 — Normal (white) */}
-                <Projects />
                 <FAQ />
 
                 {/* Pair 4 — Highlighted */}

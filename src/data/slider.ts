@@ -8,20 +8,11 @@ export const sliderImages = [
 export const sliderEvents = [
     {
         image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=1200",
-        label: "Health Seminar",
-        title: "National Cardiology Seminar 2024",
-        date: "March 15, 2024",
     },
     {
         image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=1200",
-        label: "Medical Workshop",
-        title: "Non-Invasive Surgery Technology Workshop",
-        date: "April 22, 2024",
     },
     {
         image: "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=1200",
-        label: "Free Checkup",
-        title: "Free Medical Checkup for the Community",
-        date: "May 10, 2024",
     }
 ];
