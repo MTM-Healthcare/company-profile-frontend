@@ -22,8 +22,6 @@ interface EventsSliderProps {
 
 export function EventsSlider({
     slides,
-    title = "MTM Events",
-    description = "Our Social Events with Publicity",
     hideHeader = false
 }: EventsSliderProps) {
     const [currentSlide, setCurrentSlide] = React.useState(0);
@@ -42,8 +40,6 @@ export function EventsSlider({
         <section className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center ${hideHeader ? '' : 'mt-32'}`}>
             {!hideHeader && (
                 <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-                    <h2 className="font-heading font-bold text-4xl text-brand-dark">{title}</h2>
-                    <p className="text-base text-gray-500 mt-2 mb-8">{description}</p>
                 </motion.div>
             )}
 

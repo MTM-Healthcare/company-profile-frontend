@@ -1,6 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Trophy } from 'lucide-react';
 
 const achievementsData = [
@@ -39,25 +40,27 @@ export function Achievements() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5, delay: idx * 0.1 }}
-                        className="group flex flex-col items-center"
+                        className="group flex flex-col items-center cursor-pointer"
                     >
-                        {/* Rounded Image Container */}
-                        <div className="relative w-full aspect-[4/5] overflow-hidden rounded-[1.5rem] md:rounded-[2rem] bg-gray-100 shadow-sm border-[3px] border-white/40 mb-5">
-                            <Image
-                                src={item.image}
-                                alt={`Achievement ${idx + 1}`}
-                                fill
-                                className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                                sizes="(max-width: 768px) 50vw, 25vw"
-                            />
-                        </div>
+                        <Link href="/our-achievements/detail" className="w-full h-full flex flex-col items-center outline-none">
+                            {/* Rounded Image Container */}
+                            <div className="relative w-full aspect-[4/5] overflow-hidden rounded-[1.5rem] md:rounded-[2rem] bg-gray-100 shadow-sm border-[3px] border-white/40 mb-5 transition-shadow duration-300 group-hover:shadow-lg group-hover:shadow-blue-500/10 group-hover:border-blue-100/50">
+                                <Image
+                                    src={item.image}
+                                    alt={`Achievement ${idx + 1}`}
+                                    fill
+                                    className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                                    sizes="(max-width: 768px) 50vw, 25vw"
+                                />
+                            </div>
 
-                        {/* Centered Text Container */}
-                        <div className="w-full text-center">
-                            <p className="text-xs md:text-sm text-gray-700 leading-relaxed font-medium px-1">
-                                {item.text}
-                            </p>
-                        </div>
+                            {/* Centered Text Container */}
+                            <div className="w-full text-center">
+                                <p className="text-xs md:text-sm text-gray-700 group-hover:text-blue-600 transition-colors duration-300 leading-relaxed font-medium px-1">
+                                    {item.text}
+                                </p>
+                            </div>
+                        </Link>
                     </motion.div>
                 ))}
             </div>

@@ -2,7 +2,6 @@ import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { Hero } from '@/components/sections/Hero';
 import { About } from '@/components/sections/About';
-import { CompanyJourney } from '@/components/sections/CompanyJourney';
 import { ProductsSlider } from '@/components/sections/ProductsSlider';
 import { EventsSlider } from '@/components/sections/EventsSlider';
 import { Achievements } from '@/components/sections/Achievements';
@@ -26,7 +25,6 @@ export default function Home() {
 
                 {/* Pair 1 — Normal (white) */}
                 <About />
-                <CompanyJourney />
                 <ProductsSlider />
 
                 {/* Pair 2 — Highlighted */}

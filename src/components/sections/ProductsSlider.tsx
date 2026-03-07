@@ -1,8 +1,8 @@
 'use client';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import Link from 'next/link';
 
 const products = [
     {
@@ -48,8 +48,9 @@ export function ProductsSlider() {
 
     const handleScroll = () => {
         if (scrollContainerRef.current) {
-            const { scrollLeft, clientWidth } = scrollContainerRef.current;
-            const newIndex = Math.round(scrollLeft / clientWidth);
+            const { scrollLeft, scrollWidth } = scrollContainerRef.current;
+            const cardWidth = scrollWidth / products.length;
+            const newIndex = Math.round(scrollLeft / cardWidth);
             setActiveIndex(newIndex);
         }
     };
@@ -66,35 +67,55 @@ export function ProductsSlider() {
         }
     };
 
-    return (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 mb-24">
-            {/* Section Header */}
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-                className="flex items-end justify-between mb-10"
-            >
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setActiveIndex((current) => {
+                const next = (current + 1) % products.length;
+                if (scrollContainerRef.current) {
+                    const container = scrollContainerRef.current;
+                    const cardWidth = container.scrollWidth / products.length;
+                    container.scrollTo({
+                        left: cardWidth * next,
+                        behavior: 'smooth'
+                    });
+                }
+                return next;
+            });
+        }, 3000);
 
-                {/* Navigation Arrows */}
-                <div className="hidden md:flex items-center gap-2">
-                    <button
-                        onClick={() => scroll('left')}
-                        className="w-10 h-10 rounded-full border-2 border-gray-200 flex items-center justify-center text-gray-400 hover:border-brand-dark hover:text-brand-dark hover:bg-white transition-all cursor-pointer shadow-sm active:scale-95 z-10"
-                        aria-label="Geser ke kiri"
-                    >
-                        <ChevronLeft className="w-5 h-5 pointer-events-none" />
-                    </button>
-                    <button
-                        onClick={() => scroll('right')}
-                        className="w-10 h-10 rounded-full border-2 border-gray-200 flex items-center justify-center text-gray-400 hover:border-brand-dark hover:text-brand-dark hover:bg-white transition-all cursor-pointer shadow-sm active:scale-95 z-10"
-                        aria-label="Geser ke kanan"
-                    >
-                        <ChevronRight className="w-5 h-5 pointer-events-none" />
-                    </button>
-                </div>
-            </motion.div>
+        return () => clearInterval(timer);
+    }, []);
+
+    return (
+        <section className="w-full bg-gradient-to-b from-blue-50/40 via-[#e9effc] to-blue-100/30 py-20 relative overflow-hidden">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                {/* Section Header */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                    className="flex flex-col md:flex-row md:items-start justify-between mb-12 gap-6 w-full"
+                >
+                    <div className="flex-1 max-w-2xl">
+                        <h2 className="text-5xl md:text-[54px] font-heading font-extrabold text-[#242e4c] mb-6 tracking-tight">
+                            Our Product
+                        </h2>
+                        <p className="text-sm md:text-[15px] font-medium text-[#242e4c]/80 leading-relaxed font-sans max-w-md">
+                            Professional and educated, prioritizing patients and<br className="hidden md:block"/>
+                            customers as number one for health and good<br className="hidden md:block"/>
+                            cooperation.
+                        </p>
+                    </div>
+
+                    <div className="flex items-start shrink-0 pt-2">
+                        <Link href="/products">
+                            <button className="px-7 py-3 bg-[#CEDFFF] hover:bg-[#b5ccfb] text-[#242e4c] text-[15px] font-bold rounded-full transition-colors duration-300 font-sans shadow-sm backdrop-blur-sm border border-white/50 cursor-pointer">
+                                See All Product
+                            </button>
+                        </Link>
+                    </div>
+                </motion.div>
 
             {/* Product Cards Slider */}
             <div className="relative -mx-4 px-4 sm:mx-0 sm:px-0">
@@ -114,7 +135,7 @@ export function ProductsSlider() {
                                 duration: 0.5,
                                 delay: idx * 0.1,
                             }}
-                            className="bg-gradient-to-br from-blue-50 to-white backdrop-blur-md rounded-2xl p-5 md:p-6 border-[2px] border-white shadow-lg shadow-blue-100/40 flex flex-col items-start justify-end aspect-[3/4] group relative hover:shadow-xl hover:shadow-blue-200/60 transition-all duration-500 snap-center shrink-0 w-[200px] sm:w-[220px] md:w-[240px]"
+                            className="bg-white rounded-[20px] p-6 shadow-sm border border-transparent hover:border-blue-100 flex flex-col items-start justify-end aspect-[3/4] group relative hover:shadow-lg transition-all duration-300 snap-center shrink-0 w-[260px] sm:w-[280px] md:w-[300px]"
                         >
                             {/* Product Image */}
                             <div className="absolute inset-x-0 bottom-1/4 top-6 flex items-center justify-center pointer-events-none z-10">
@@ -129,8 +150,8 @@ export function ProductsSlider() {
                                 </div>
                             </div>
 
-                            <div className="relative z-20 w-full pt-2 mt-auto">
-                                <h3 className="font-heading font-bold text-lg text-brand-dark group-hover:text-blue-600 transition-colors duration-300">
+                            <div className="relative z-20 w-full mt-auto">
+                                <h3 className="font-heading font-bold text-[22px] text-[#242e4c] group-hover:text-[#183988] transition-colors duration-300">
                                     {product.name}
                                 </h3>
                             </div>
@@ -146,14 +167,14 @@ export function ProductsSlider() {
                         key={idx}
                         onClick={() => scrollToProduct(idx)}
                         aria-label={`Lihat produk ${idx + 1}`}
-                        className={`w-3 h-3 rounded-full transition-all duration-300 ${activeIndex === idx
-                            ? 'bg-brand-dark scale-110'
-                            : 'bg-gray-300 hover:bg-gray-400'
+                        className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${activeIndex === idx
+                            ? 'bg-[#B21F24] scale-125'
+                            : 'bg-[#183988] hover:bg-[#0c2460]'
                             }`}
                     />
                 ))}
             </div>
-
+            </div>
             <style jsx global>{`
                 .hide-scrollbar::-webkit-scrollbar {
                     display: none;

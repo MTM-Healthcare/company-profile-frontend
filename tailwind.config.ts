@@ -19,8 +19,8 @@ const config = {
     },
     extend: {
       fontFamily: {
-        sans: ['var(--font-inter)', 'sans-serif'],
-        heading: ['var(--font-poppins)', 'sans-serif'],
+        sans: ['var(--font-host-grotesk)', 'sans-serif'],
+        heading: ['var(--font-host-grotesk)', 'sans-serif'],
       },
       colors: {
         brand: {

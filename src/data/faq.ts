@@ -19,15 +19,15 @@ export const contactFaqData = [
 
 export const companyFaqData = [
     {
-        question: "Do you accept BPJS health insurance?",
-        answer: "Yes, we accept BPJS Kesehatan patients with a referral from a primary healthcare facility. Please bring all required documents during registration."
+        question: "Question #1",
+        answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     },
     {
-        question: "How do I register online?",
-        answer: "You can download the MTM Healthcare app on the PlayStore or AppStore, then select your doctor's schedule and the desired polyclinic."
+        question: "Question #2",
+        answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     },
     {
-        question: "What are the ER (Emergency Room) operating hours?",
-        answer: "Our Emergency Room (ER) is open 24 hours every day, including national holidays, and is staffed with a medical team on standby."
+        question: "Question #3",
+        answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     }
 ];

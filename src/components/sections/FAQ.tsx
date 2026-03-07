@@ -1,13 +1,14 @@
 'use client';
 import * as React from 'react';
 import { motion } from 'framer-motion';
-import { MessageCircleQuestion } from 'lucide-react';
+import { ImageIcon } from 'lucide-react';
 import Image from 'next/image';
 
 import { companyFaqData } from '@/data/faq';
 import { fadeUp } from '@/utils/animations';
 
 export function FAQ() {
+    const [openIndex, setOpenIndex] = React.useState<number | null>(0); // 0 corresponds to the first item
 
     return (
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-32">
@@ -32,32 +33,49 @@ export function FAQ() {
             <div className="flex flex-col md:flex-row gap-10 lg:gap-16 items-start">
 
                 {/* Left — FAQ Questions */}
-                <div className="md:w-1/2 w-full order-2 md:order-1">
-                    <div className="space-y-4">
-                        {companyFaqData.map((faq, idx) => (
-                            <motion.div
-                                key={idx}
-                                initial={{ opacity: 0, y: 16 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.45, delay: idx * 0.1 }}
-                                className="rounded-2xl border border-gray-100 bg-white/60 backdrop-blur-sm shadow-sm overflow-hidden"
-                            >
-                                <div className="flex items-start gap-4 px-5 py-4">
-                                    <div className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0 bg-blue-50 text-blue-400 mt-0.5">
-                                        <MessageCircleQuestion size={17} />
+                <div className="md:w-1/2 w-full order-2 md:order-1 mt-6 md:mt-0">
+                    <div className="flex flex-col">
+                        {companyFaqData.map((faq, idx) => {
+                            const isOpen = openIndex === idx;
+
+                            return (
+                                <motion.div
+                                    key={idx}
+                                    initial={{ opacity: 0, y: 16 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.45, delay: idx * 0.1 }}
+                                    onClick={() => setOpenIndex(isOpen ? null : idx)}
+                                    className="cursor-pointer border-b border-gray-400 py-5 transition-all duration-300 ease-in-out"
+                                >
+                                    <div className="flex items-start gap-4">
+                                        <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center shrink-0 mt-0.5 text-white font-bold text-lg">
+                                            {idx + 1}
+                                        </div>
+                                        <div className="flex-1">
+                                            <h3 className="font-heading font-black text-[22px] text-[#1a1a1a] tracking-tight">
+                                                {faq.question}
+                                            </h3>
+
+                                            {/* Accordion Content */}
+                                            <motion.div
+                                                initial={false}
+                                                animate={{
+                                                    height: isOpen ? 'auto' : 0,
+                                                    opacity: isOpen ? 1 : 0,
+                                                    marginTop: isOpen ? 8 : 0
+                                                }}
+                                                className="overflow-hidden"
+                                            >
+                                                <p className="text-sm font-medium text-[#1a1a1a]/80 leading-relaxed pr-6">
+                                                    {faq.answer}
+                                                </p>
+                                            </motion.div>
+                                        </div>
                                     </div>
-                                    <div className="flex-1">
-                                        <h3 className="font-heading font-semibold text-sm md:text-base text-black">
-                                            Question #{idx + 1}
-                                        </h3>
-                                        <p className="text-sm leading-relaxed mt-1.5">
-                                            {faq.answer}
-                                        </p>
-                                    </div>
-                                </div>
-                            </motion.div>
-                        ))}
+                                </motion.div>
+                            );
+                        })}
                     </div>
                 </div>
 
@@ -71,7 +89,7 @@ export function FAQ() {
                         className="relative w-full h-[340px] lg:h-[380px] rounded-2xl overflow-hidden shadow-xl shadow-blue-100/40"
                     >
                         <Image
-                            src="https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?auto=format&fit=crop&q=80&w=800"
+                            src="/faq-img.png"
                             alt="Hospital Building"
                             fill
                             className="object-cover"

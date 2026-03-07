@@ -16,9 +16,7 @@ export default function AboutPage() {
             <main className="flex-1 pt-32 pb-12 overflow-hidden relative z-10">
                 <AboutHero />
                 <Services />
-                <CompanyJourney />
                 <WhyChooseUs />
-                <CompanyDetail />
                 <AboutFAQ />
                 <AboutContact />
             </main>
