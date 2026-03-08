@@ -14,72 +14,98 @@ const stats = [
 
 export function CompanyAchievements() {
     return (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-36">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-28 items-center">
+        <section className="w-full py-24 px-4 sm:px-6 lg:px-8 mt-24">
+            <div className="max-w-7xl mx-auto">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
 
-                {/* Left: Stats */}
-                <motion.div variants={fadeLeft} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0}>
-                    <PillBadge className="mb-5"><Award size={13} /> Milestone</PillBadge>
-                    <h2 className="font-heading font-black text-4xl md:text-5xl text-brand-dark mb-5 leading-tight">
-                        Company<br className="hidden md:block" />{' '}
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Achievements</span>
-                    </h2>
-                    <p className="text-sm md:text-base text-gray-500 leading-relaxed max-w-md mb-12">
-                        These numbers are clear evidence of our dedication. From humble beginnings to becoming a main pillar of health.
-                    </p>
+                    {/* Left: TItle & Stats */}
+                    <motion.div variants={fadeLeft} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0}>
+                        <h2 className="font-heading font-black text-4xl md:text-5xl text-[#1a202c] mb-6 leading-tight">
+                            Company Achievements
+                        </h2>
+                        <p className="text-[#1a202c]/80 text-sm md:text-base leading-relaxed mb-16 max-w-lg">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+                        </p>
 
-                    <div className="grid grid-cols-2 gap-6">
-                        {stats.map((s, i) => (
-                            <motion.div
-                                key={i}
-                                variants={fadeUp as any}
-                                initial="hidden"
-                                whileInView="visible"
-                                viewport={{ once: true }}
-                                custom={i * 0.1 + 0.2}
-                                className="group relative bg-white/50 backdrop-blur-md border border-white/80 rounded-3xl p-5 hover:shadow-xl hover:shadow-blue-100/60 hover:bg-white hover:-translate-y-1 transition-all duration-300 cursor-pointer overflow-hidden"
-                            >
-                                {/* Background glow */}
-                                <div className="absolute inset-0 bg-gradient-to-br from-blue-50/0 to-indigo-50/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl" />
-                                <div className="relative z-10">
-                                    <div className="w-10 h-10 rounded-2xl bg-blue-100/80 text-blue-600 flex items-center justify-center mb-4 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300 shadow-sm">
-                                        {s.icon}
-                                    </div>
-                                    <div className="font-heading font-black text-3xl md:text-4xl lg:text-5xl text-transparent bg-clip-text bg-gradient-to-br from-slate-800 to-blue-800 group-hover:from-blue-600 group-hover:to-indigo-600 transition-all duration-300 mb-2">
-                                        {s.value}
-                                    </div>
-                                    <div className="text-xs font-bold text-brand-dark mb-1 tracking-wide">{s.label}</div>
-                                    <p className="text-[11px] text-gray-500 leading-relaxed">{s.desc}</p>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
-                </motion.div>
+                        <div className="grid grid-cols-2 gap-x-8 gap-y-16">
+                            {/* Stat 1 */}
+                            <div className="flex flex-col items-start md:items-center text-left md:text-center">
+                                <span className="font-heading font-black text-5xl md:text-6xl text-[#1a202c] mb-3">
+                                    1997
+                                </span>
+                                <p className="text-[13px] md:text-sm text-[#1a202c]/80 font-medium leading-relaxed max-w-[200px]">
+                                    Mengabdi untuk kesehatan Indonesia sejak tahun 1997
+                                </p>
+                            </div>
 
-                {/* Right: Masonry */}
-                <motion.div variants={fadeRight} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0.2}>
-                    <p className="text-sm text-gray-500 mb-8 hidden lg:block leading-relaxed max-w-md">
-                        Collaboration, dedication, and cutting-edge medical technology support form the backbone of our daily operational success at MTM Healthcare.
-                    </p>
-                    <div className="grid grid-cols-2 gap-4 md:gap-5 bg-gradient-to-br from-white/60 to-blue-50/40 p-5 md:p-6 rounded-[3rem] backdrop-blur-xl border border-white/70 shadow-2xl shadow-blue-100/40">
-                        {/* Top full-width */}
-                        <div className="col-span-2 rounded-[2.5rem] overflow-hidden h-52 md:h-64 shadow-lg relative group">
-                            <Image src="https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?auto=format&fit=crop&q=80&w=1000" alt="MTM Hospital Exterior" fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
-                            <div className="absolute inset-0 bg-gradient-to-t from-blue-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                            {/* Stat 2 */}
+                            <div className="flex flex-col items-start md:items-center text-left md:text-center">
+                                <span className="font-heading font-black text-5xl md:text-6xl text-[#1a202c] mb-3">
+                                    340
+                                </span>
+                                <p className="text-[13px] md:text-sm text-[#1a202c]/80 font-medium leading-relaxed max-w-[200px]">
+                                    Bekerja sama dengan 340 cabang rumah sakit di seluruh dunia
+                                </p>
+                            </div>
+
+                            {/* Stat 3 */}
+                            <div className="flex flex-col items-start md:items-center text-left md:text-center">
+                                <span className="font-heading font-black text-5xl md:text-6xl text-[#1a202c] mb-3">
+                                    2005
+                                </span>
+                                <p className="text-[13px] md:text-sm text-[#1a202c]/80 font-medium leading-relaxed max-w-[200px]">
+                                    Mendapatkan seritfikat dari Ikatan Dokter Indonesia sebagai salah satu rumah sakit ter-profesional
+                                </p>
+                            </div>
+
+                            {/* Stat 4 */}
+                            <div className="flex flex-col items-start md:items-center text-left md:text-center">
+                                <span className="font-heading font-black text-5xl md:text-6xl text-[#1a202c] mb-3 whitespace-nowrap">
+                                    10Jt +
+                                </span>
+                                <p className="text-[13px] md:text-sm text-[#1a202c]/80 font-medium leading-relaxed max-w-[200px]">
+                                    Telah melayani dan mengabdi untuk masyarakat dan memberikan kesehatan yang terbaik
+                                </p>
+                            </div>
                         </div>
-                        {/* Bottom left */}
-                        <div className="rounded-[2.5rem] overflow-hidden h-48 shadow-md relative group">
-                            <Image src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=500" alt="Hospital Interior" fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
-                            <div className="absolute inset-0 bg-gradient-to-t from-blue-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                        </div>
-                        {/* Bottom right */}
-                        <div className="rounded-[2.5rem] overflow-hidden h-48 shadow-md relative group">
-                            <Image src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=500" alt="Hospital Bed" fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
-                            <div className="absolute inset-0 bg-gradient-to-t from-blue-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                        </div>
-                    </div>
-                </motion.div>
+                    </motion.div>
 
+                    {/* Right: Masonry Images */}
+                    <motion.div variants={fadeRight} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0.2}>
+                        <div className="grid grid-cols-2 gap-4">
+                            {/* Top full-width */}
+                            <div className="col-span-2 relative h-48 md:h-60 rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-md group">
+                                <Image 
+                                    src="https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?auto=format&fit=crop&q=80&w=1000" 
+                                    alt="Hospital Building" 
+                                    fill 
+                                    className="object-cover transition-transform duration-700 group-hover:scale-105" 
+                                />
+                            </div>
+                            
+                            {/* Bottom left */}
+                            <div className="relative h-56 md:h-72 rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-md group">
+                                <Image 
+                                    src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=500" 
+                                    alt="Hospital Interior" 
+                                    fill 
+                                    className="object-cover transition-transform duration-700 group-hover:scale-105" 
+                                />
+                            </div>
+
+                            {/* Bottom right */}
+                            <div className="relative h-56 md:h-72 rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-md group mt-12">
+                                <Image 
+                                    src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=500" 
+                                    alt="Hospital Bed" 
+                                    fill 
+                                    className="object-cover transition-transform duration-700 group-hover:scale-105" 
+                                />
+                            </div>
+                        </div>
+                    </motion.div>
+
+                </div>
             </div>
         </section>
     );

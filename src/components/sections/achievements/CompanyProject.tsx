@@ -1,131 +1,109 @@
 'use client';
 import * as React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Star, ArrowRight } from 'lucide-react';
-import { fadeUp, fadeLeft, fadeRight, stagger, PillBadge } from './Shared';
+import { fadeUp, fadeLeft, fadeRight, stagger } from './Shared';
 
 const projects = [
     {
-        title: "Integrated Diagnostic Center Building",
-        tag: "Flagship Project",
-        img: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=1200",
-        desc: "Smart diagnostic facility project under one roof to improve the accuracy and speed of comprehensive patient medical reporting.",
-        featured: true,
+        title: "Project No #1",
+        img: "/company-project.png", // using an existing image or fall back to unsplash
+        desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     },
     {
-        title: "New Inpatient Facility",
-        tag: "Project #2",
-        img: "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&q=80&w=300",
-        desc: "200-bed capacity with international standards and an integrated service system.",
+        title: "Project No #2",
+        img: "/company-project.png",
+        desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     },
     {
-        title: "Electronic Medical Records",
-        tag: "Project #3",
-        img: "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=300",
-        desc: "Centralized system integration to accelerate patient service flow across all branches.",
+        title: "Project No #3",
+        img: "/company-project.png",
+        desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     },
     {
-        title: "24-Hour ER Expansion",
-        tag: "Project #4",
-        img: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=300",
-        desc: "High-tech emergency unit to handle complex trauma cases.",
+        title: "Project No #4",
+        img: "/company-project.png",
+        desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     },
 ];
 
 export function CompanyProject() {
     return (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-32">
-            {/* Header */}
-            <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4">
-                <div>
-                    <motion.div variants={fadeUp as any} custom={0}><PillBadge className="mb-3">Portfolio</PillBadge></motion.div>
-                    <motion.h2 variants={fadeUp as any} custom={0.1} className="font-heading font-black text-4xl md:text-5xl text-brand-dark leading-tight">
-                        Our Company<br className="hidden md:block" /> Project
+        <section className="w-full py-20 px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto">
+                {/* Header */}
+                <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex flex-col md:flex-row justify-between items-center mb-12 gap-4">
+                    <motion.h2 variants={fadeUp as any} custom={0} className="font-heading font-black text-4xl md:text-5xl text-[#1a202c]">
+                        Our Company Project
                     </motion.h2>
-                </div>
-                <motion.button variants={fadeUp as any} custom={0.2} className="group hidden md:inline-flex items-center gap-2 bg-white/80 backdrop-blur border border-blue-100 text-blue-700 hover:bg-gradient-to-r hover:from-blue-600 hover:to-indigo-600 hover:text-white hover:border-transparent font-semibold px-7 py-3 rounded-full text-sm transition-all duration-300 shadow-sm hover:shadow-lg hover:shadow-blue-500/25">
-                    <a href="/our-achievements" className="flex items-center gap-2">
+                    <motion.button variants={fadeUp as any} custom={0.2} className="bg-[#d0e1fd] hover:bg-[#b8cff2] text-[#1a202c] font-medium px-8 py-2.5 rounded-full shadow-sm transition-colors duration-300">
                         See All Projects
-                        <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                    </a>
-                </motion.button>
-            </motion.div>
-
-            {/* Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
-
-                {/* Featured Left */}
-                <motion.div
-                    variants={fadeLeft}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    custom={0}
-                    className="lg:col-span-8 group"
-                >
-                    <div className="relative w-full h-[320px] md:h-[420px] rounded-[3rem] overflow-hidden shadow-2xl shadow-blue-100/60 border-2 border-white/90 mb-6">
-                        <Image
-                            src={projects[0].img}
-                            alt={projects[0].title}
-                            fill
-                            className="object-cover transition-transform duration-1000 ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-105"
-                        />
-                        {/* Base gradient overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-slate-900/10 to-transparent" />
-                        {/* Floating tag */}
-                        <div className="absolute top-6 left-6">
-                            <span className="inline-flex items-center gap-1.5 bg-blue-600/90 backdrop-blur-sm text-white text-xs font-semibold px-4 py-1.5 rounded-full shadow-md">
-                                <Star size={11} className="fill-white" /> {projects[0].tag}
-                            </span>
-                        </div>
-                        {/* Floating title on image */}
-                        <div className="absolute bottom-0 inset-x-0 p-8 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                            <h3 className="font-heading font-black text-2xl text-white drop-shadow-lg">{projects[0].title}</h3>
-                        </div>
-                    </div>
-                    <h3 className="font-heading font-bold text-2xl text-brand-dark mb-3 group-hover:text-blue-600 transition-colors duration-300">
-                        {projects[0].title}
-                    </h3>
-                    <p className="text-sm text-gray-500 leading-relaxed max-w-lg">{projects[0].desc}</p>
+                    </motion.button>
                 </motion.div>
 
-                {/* List Right */}
-                <motion.div
-                    variants={stagger}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    className="lg:col-span-4 flex flex-col gap-4"
-                >
-                    {projects.slice(1).map((proj, i) => (
-                        <motion.div
-                            key={i}
-                            variants={fadeRight}
-                            custom={i * 0.1}
-                            className="flex gap-4 items-center bg-white/60 backdrop-blur-md p-3.5 rounded-3xl border border-white/80 shadow-sm hover:shadow-xl hover:shadow-blue-100/60 hover:bg-white hover:-translate-y-0.5 transition-all duration-300 cursor-pointer group"
-                        >
-                            <div className="w-28 h-20 relative rounded-2xl overflow-hidden shrink-0 border border-blue-50 shadow-sm">
-                                <Image src={proj.img} alt={proj.title} fill className="object-cover group-hover:scale-110 transition-transform duration-500" />
-                            </div>
-                            <div className="flex-1 min-w-0">
-                                <span className="inline-block text-[10px] text-blue-500 font-semibold tracking-wider uppercase mb-0.5">{proj.tag}</span>
-                                <h4 className="font-heading font-bold text-sm text-brand-dark mb-1 group-hover:text-blue-600 transition-colors leading-snug">{proj.title}</h4>
-                                <p className="text-[11px] text-gray-500 line-clamp-2 leading-relaxed">{proj.desc}</p>
-                            </div>
-                            <div className="shrink-0 w-7 h-7 rounded-full bg-blue-50 flex items-center justify-center text-blue-500 opacity-0 group-hover:opacity-100 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
-                                <ArrowRight size={13} />
-                            </div>
-                        </motion.div>
-                    ))}
-                </motion.div>
-            </div>
+                {/* Grid */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
 
-            {/* Mobile button */}
-            <div className="lg:hidden flex justify-center mt-10">
-                <a href="/our-achievements" className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold px-8 py-3 rounded-full text-sm shadow-lg shadow-blue-500/25 hover:shadow-xl hover:scale-105 transition-all duration-300">
-                    See All Projects <ArrowRight size={14} />
-                </a>
+                    {/* Featured Left */}
+                    <motion.div
+                        variants={fadeLeft}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        custom={0}
+                        className="lg:col-span-7 flex flex-col group cursor-pointer"
+                    >
+                        <Link href="/our-achievements" className="contents">
+                            <div className="relative w-full aspect-[4/3] rounded-[1.5rem] overflow-hidden shadow-md bg-white mb-6">
+                                <Image
+                                    src={projects[0].img}
+                                    alt={projects[0].title}
+                                    fill
+                                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                                />
+                            </div>
+                            <h3 className="font-heading font-bold text-2xl text-[#1a202c] mb-3 group-hover:text-blue-600 transition-colors">
+                                {projects[0].title}
+                            </h3>
+                            <p className="text-sm text-[#1a202c]/80 leading-relaxed font-medium">
+                                {projects[0].desc}
+                            </p>
+                        </Link>
+                    </motion.div>
+
+                    {/* List Right */}
+                    <motion.div
+                        variants={stagger}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        className="lg:col-span-5 flex flex-col gap-6 justify-between"
+                    >
+                        {projects.slice(1).map((proj, i) => (
+                            <motion.div
+                                key={i}
+                                variants={fadeRight}
+                                custom={i * 0.1}
+                            >
+                                <Link href="/our-achievements" className="flex gap-4 items-stretch group cursor-pointer">
+                                    <div className="w-40 relative rounded-[1.5rem] overflow-hidden shrink-0 shadow-md bg-white border-2 border-white">
+                                        <Image src={proj.img} alt={proj.title} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
+                                    </div>
+                                    <div className="flex-1 flex flex-col justify-center">
+                                        <p className="text-[11px] text-[#1a202c]/80 leading-relaxed font-medium mb-2">
+                                            {proj.desc}
+                                        </p>
+                                        <h4 className="font-heading font-bold text-lg text-[#1a202c] group-hover:text-blue-600 transition-colors">
+                                            {proj.title}
+                                        </h4>
+                                    </div>
+                                </Link>
+                            </motion.div>
+                        ))}
+                    </motion.div>
+
+                </div>
             </div>
         </section>
     );

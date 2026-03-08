@@ -6,7 +6,6 @@ import { Footer } from '@/components/layout/Footer';
 // Extracted Sections
 import { CompanyEventsHero } from '@/components/sections/company-events/CompanyEventsHero';
 import { CompanyEventsFeatured } from '@/components/sections/company-events/CompanyEventsFeatured';
-import { CompanyEventsDivider } from '@/components/sections/company-events/CompanyEventsDivider';
 import { CompanyEventsGrid } from '@/components/sections/company-events/CompanyEventsGrid';
 
 export default function CompanyEventsPage() {
@@ -16,7 +15,6 @@ export default function CompanyEventsPage() {
             <main className="pt-28 pb-24 flex-grow w-full relative z-10">
                 <CompanyEventsHero />
                 <CompanyEventsFeatured />
-                <CompanyEventsDivider />
                 <CompanyEventsGrid />
             </main>
             <Footer />

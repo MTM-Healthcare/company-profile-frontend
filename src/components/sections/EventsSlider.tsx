@@ -22,6 +22,9 @@ interface EventsSliderProps {
 
 export function EventsSlider({
     slides,
+    title,
+    description,
+    badgeText,
     hideHeader = false
 }: EventsSliderProps) {
     const [currentSlide, setCurrentSlide] = React.useState(0);
@@ -39,7 +42,18 @@ export function EventsSlider({
     return (
         <section className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center ${hideHeader ? '' : 'mt-32'}`}>
             {!hideHeader && (
-                <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+                <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mb-12">
+                    {badgeText && (
+                        <span className="inline-block bg-blue-100 text-blue-800 text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
+                            {badgeText}
+                        </span>
+                    )}
+                    <h2 className="text-3xl md:text-5xl font-heading font-bold text-slate-900 mb-6">
+                        {title || "MTM Events"}
+                    </h2>
+                    <p className="text-slate-600 max-w-2xl mx-auto text-lg leading-relaxed">
+                        {description || "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip."}
+                    </p>
                 </motion.div>
             )}
 

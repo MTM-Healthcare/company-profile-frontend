@@ -15,19 +15,19 @@ export function BlogHero() {
                     className="object-cover"
                 />
             </div>
-            
+
             {/* Info Section */}
-            <div className="w-full bg-[#e0eafe]">
+            <div className="w-full">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
                     <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-10">
                         {/* Left: Logo & Text */}
                         <div className="md:w-1/2">
                             <div className="mb-4">
-                                <Image 
-                                    src="/logo-mtm.png" 
-                                    alt="Apotek MTM" 
-                                    width={160} 
-                                    height={50} 
+                                <Image
+                                    src="/logo-mtm.png"
+                                    alt="Apotek MTM"
+                                    width={160}
+                                    height={50}
                                     className="object-contain"
                                 />
                             </div>

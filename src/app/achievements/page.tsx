@@ -9,6 +9,7 @@ import { PartnerLogos } from '@/components/sections/achievements/PartnerLogos';
 import { CompanyProject } from '@/components/sections/achievements/CompanyProject';
 import { CompanyAchievements } from '@/components/sections/achievements/CompanyAchievements';
 import { ConnectAndMap } from '@/components/sections/achievements/ConnectAndMap';
+import { Newsletter } from '@/components/sections/Newsletter';
 
 export default function AchievementsPage() {
     return (
@@ -21,6 +22,7 @@ export default function AchievementsPage() {
                 <CompanyProject />
                 <CompanyAchievements />
                 <ConnectAndMap />
+                <Newsletter />
             </main>
 
             <Footer />
