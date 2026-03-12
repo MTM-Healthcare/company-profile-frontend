@@ -26,13 +26,11 @@ export default function BlogEventsPage() {
                 <BlogHero />
                 <WeDoManyEvents />
                 <MtmBlogspot />
-
                 <EventsSlider
                     slides={sliderImages.map(img => ({ image: img }))}
                     title="MTM Events"
                     description="Our Social Events with Publicity"
                 />
-
                 <Contact />
                 <Newsletter />
             </main>

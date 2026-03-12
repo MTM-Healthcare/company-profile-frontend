@@ -11,6 +11,7 @@ import { ContactIntro } from '@/components/sections/contact/ContactIntro';
 import { ContactFaq } from '@/components/sections/contact/ContactFaq';
 import { Contact } from '@/components/sections/Contact';
 import { ContactNewsletter } from '@/components/sections/contact/ContactNewsletter';
+import { ContactEventSlider } from '@/components/sections/contact/ContactEventSlider';
 
 /* ─── Component ────────────────────────────────────────────────────── */
 export default function ContactPage() {
@@ -22,11 +23,7 @@ export default function ContactPage() {
             <main className="flex-1 w-full relative z-10">
                 <ContactHero />
 
-                <EventsSlider
-                    slides={sliderImages.map(img => ({ image: img }))}
-                    badgeText="Documentation"
-                    description="Documentation of our social and internal activities building strong bonds with the community."
-                />
+                <ContactEventSlider images={sliderImages} />
 
                 <ContactFaq />
                 <Contact />

@@ -20,8 +20,8 @@ export function Navbar() {
         { name: 'Home', href: '/' },
         { name: 'About Us', href: '/about' },
         { name: 'Products', href: '/products' },
-        { name: 'Blog & Events', href: '/blog-events' },
-        { name: 'Achievements', href: '/achievements' },
+        // { name: 'Blog & Events', href: '/blog-events' },
+        // { name: 'Achievements', href: '/achievements' },
         { name: 'Contact', href: '/contact' },
     ];
 

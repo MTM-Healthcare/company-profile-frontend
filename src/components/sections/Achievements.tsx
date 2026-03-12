@@ -1,68 +1,67 @@
 'use client';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
-import Link from 'next/link';
-import { Trophy } from 'lucide-react';
+import { Award, Shield, Clock, HeartPulse } from 'lucide-react';
 
 const achievementsData = [
     {
-        image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=400",
-        text: "Award for Hospital with Best Patient Service at the National level in 2023."
+        icon: Award,
+        text: "Kualitas Pelayanan Kesehatan Masyarakat yang Tinggi dan Profesional"
     },
     {
-        image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=400",
-        text: "JCI International Certification for Patient Safety Standards and Facility Management."
+        icon: Shield,
+        text: "Fasilitas dan Layanan kesehatan yang modern dan kenyamanan pasien"
     },
     {
-        image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=400",
-        text: "The first non-invasive surgical technology research center in Southeast Asia recognized by WHO."
+        icon: Clock,
+        text: "Kolaborasi dengan tenaga kesehatan profesional, sebagai standar layanan medis MTM"
     },
     {
-        image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=400",
-        text: "Achieved the highest recovery rate for post-stroke medical rehabilitation programs."
+        icon: HeartPulse,
+        text: "Komitmen kami dalam menghadirkan pelayanan kesehatan yang aman dan terpercaya"
     }
 ];
 
 export function Achievements() {
     return (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-28 text-center">
-            {/* Section Badge */}
-            <h2 className="font-heading font-bold text-4xl text-brand-dark">This is Our Achievements</h2>
-            <p className="text-base text-gray-500 mt-3 max-w-2xl mx-auto leading-relaxed">
-                We are proud to be part of the development of modern healthcare services. Our dedication brings results recognized by global health institutions.
-            </p>
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24 text-center">
+            {/* Header Content */}
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="max-w-4xl mx-auto mb-16"
+            >
+                <h2 className="font-heading font-bold text-3xl md:text-4xl text-[#1a1a1a] mb-6">
+                    Kepercayaan yang Telah Kami Bangun
+                </h2>
+                <p className="text-[#1a1a1a] text-[14px] md:text-[15px] leading-[1.6] font-medium">
+                    MTM Healthcare terus berkomitmen menghadirkan layanan kesehatan yang berkualitas, profesional, dan terpercaya. Berbagai pencapaian ini menjadi bukti komitmen kami dalam memberikan pelayanan kesehatan terbaik bagi masyarakat.
+                </p>
+            </motion.div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 px-2 md:px-0">
-                {achievementsData.map((item, idx) => (
-                    <motion.div
-                        key={idx}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: idx * 0.1 }}
-                        className="group flex flex-col items-center cursor-pointer"
-                    >
-                        <Link href="/our-achievements/detail" className="w-full h-full flex flex-col items-center outline-none">
-                            {/* Rounded Image Container */}
-                            <div className="relative w-full aspect-[4/5] overflow-hidden rounded-[1.5rem] md:rounded-[2rem] bg-gray-100 shadow-sm border-[3px] border-white/40 mb-5 transition-shadow duration-300 group-hover:shadow-lg group-hover:shadow-blue-500/10 group-hover:border-blue-100/50">
-                                <Image
-                                    src={item.image}
-                                    alt={`Achievement ${idx + 1}`}
-                                    fill
-                                    className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                                    sizes="(max-width: 768px) 50vw, 25vw"
-                                />
+            {/* Cards Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-2 md:px-0">
+                {achievementsData.map((item, idx) => {
+                    const Icon = item.icon;
+                    return (
+                        <motion.div
+                            key={idx}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: idx * 0.1 }}
+                            className="bg-white rounded-xl p-8 shadow-[0_8px_30px_rgb(0,0,0,0.06)] flex flex-col items-center justify-center text-center min-h-[260px]"
+                        >
+                            <div className="w-14 h-14 rounded-full bg-[#f1f5f9] flex items-center justify-center mb-6 shrink-0">
+                                <Icon className="text-[#9e2a2b]" size={24} strokeWidth={2} />
                             </div>
-
-                            {/* Centered Text Container */}
-                            <div className="w-full text-center">
-                                <p className="text-xs md:text-sm text-gray-700 group-hover:text-blue-600 transition-colors duration-300 leading-relaxed font-medium px-1">
-                                    {item.text}
-                                </p>
-                            </div>
-                        </Link>
-                    </motion.div>
-                ))}
+                            <p className="text-[13px] text-gray-500 font-medium leading-[1.6]">
+                                {item.text}
+                            </p>
+                        </motion.div>
+                    );
+                })}
             </div>
         </section>
     );

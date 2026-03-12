@@ -1,58 +1,76 @@
 'use client';
 import { motion } from 'framer-motion';
-import { ShieldAlert, PlusSquare, Stethoscope, HeartPulse, Building2 } from 'lucide-react';
+import { MapPin } from 'lucide-react';
 import Image from 'next/image';
 
 export function About() {
     return (
         <>
-            <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24">
-                <div className="flex flex-col lg:flex-row justify-between items-center lg:items-end gap-14">
-                    <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                        className="lg:w-3/5"
-                    >
-                        {/* Section Badge */}
-
-                        <div className="flex flex-wrap sm:flex-nowrap items-center gap-3 sm:gap-4 mb-7">
-                            <div className="relative w-24 h-16 sm:w-32 sm:h-20 shrink-0">
-                                <Image
-                                    src="/logo-mtm-logo.png"
-                                    alt="MTM Pharmacy Logo"
-                                    fill
-                                    className="object-contain"
-                                />
+            <motion.section 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="w-full py-14 mt-16"
+            >
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="flex flex-col md:flex-row items-center justify-center gap-10 lg:gap-24">
+                        {/* Left Side: Logo & Stats */}
+                        <div className="flex flex-col gap-8 md:w-1/2 items-center md:items-start pl-0 lg:pl-10">
+                            {/* Logo */}
+                            <div className="flex items-center gap-4">
+                                <div className="relative w-14 h-14 md:w-16 md:h-16 shrink-0">
+                                    <Image
+                                        src="/logo-mtm-logo.png"
+                                        alt="MTM Healthcare Logo"
+                                        fill
+                                        className="object-contain"
+                                    />
+                                </div>
+                                <h2 className="font-heading font-bold text-[1.5rem] md:text-[1.8rem] text-[#1a1a1a] tracking-tight">MTM Healthcare</h2>
                             </div>
-                            <h1 className="font-heading font-bold text-3xl sm:text-4xl md:text-5xl text-brand-dark leading-tight whitespace-nowrap">
-                                MTM Healthcare
-                            </h1>
+                            
+                            {/* Stats */}
+                            <div className="flex gap-4 lg:gap-10 w-full justify-center md:justify-start pl-0 lg:pl-2">
+                                <div className="text-center w-[140px] md:w-[150px]">
+                                    <h3 className="font-heading font-black text-[3rem] md:text-[3.5rem] leading-none text-[#1A1A1A] mb-2 tracking-tighter">100+</h3>
+                                    <p className="text-[9px] md:text-[10px] text-[#1a1a1a] leading-[1.3] font-medium">
+                                        Tenaga Kesehatan Profesional<br/>dalam Ekosistem MTM Healthcare
+                                    </p>
+                                </div>
+                                <div className="text-center w-[140px] md:w-[150px]">
+                                    <h3 className="font-heading font-black text-[3rem] md:text-[3.5rem] leading-none text-[#1A1A1A] mb-2 tracking-tighter">25+</h3>
+                                    <p className="text-[9px] md:text-[10px] text-[#1a1a1a] leading-[1.3] font-medium">
+                                        Program dan Inisiatif Layanan<br/>Kesehatan
+                                    </p>
+                                </div>
+                            </div>
                         </div>
-                        <p className="text-base md:text-lg leading-relaxed text-gray-500 max-w-2xl">
-                            We are pioneers in integrated healthcare services that combine the latest medical technology with a human touch. Our commitment is to provide the best care for every patient. Established long ago, we continue to innovate for a brighter and more accessible healthcare future for all.
-                        </p>
-                    </motion.div>
 
-                    <motion.div
-                        initial={{ opacity: 0, x: 20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
-                        className="lg:w-2/5 flex gap-8 sm:gap-12 items-center justify-start lg:justify-end border-t-2 lg:border-t-0 lg:border-l-2 border-blue-100/50 pt-8 lg:pt-0 lg:pl-12 w-full lg:w-auto"
-                    >
-                        <div className="text-left md:text-center">
-                            <h2 className="font-heading font-bold text-5xl md:text-6xl text-600 drop-shadow-sm mb-1">100+</h2>
-                            <p className="text-[10px] sm:text-xs text-gray-500 font-bold uppercase tracking-widest mt-2">Kerja sama dengan ratusan petugas kesehatan profesional</p>
+                        {/* Divider */}
+                        <div className="hidden md:block w-[4px] h-[110px] bg-[#9e2a2b] rounded-full shrink-0 mt-4"></div>
+                        <div className="block md:hidden h-[4px] w-[110px] bg-[#9e2a2b] rounded-full shrink-0 my-4"></div>
+
+                        {/* Right Side: Our Clinic */}
+                        <div className="flex flex-col gap-5 md:w-1/3 w-full max-w-sm pr-0 lg:pr-10">
+                            <h2 className="font-heading font-bold text-[1.5rem] md:text-[1.8rem] text-[#1a1a1a] text-center md:text-left">Our Clinic</h2>
+                            <ul className="space-y-3">
+                                {[
+                                    'MTM Medical Clinic',
+                                    'Apotek HKM Tangerang',
+                                    'Apotek MTM Bekasi',
+                                    'Apotek MTM Bintaro'
+                                ].map((clinic, index) => (
+                                    <li key={index} className="flex items-center gap-3 justify-center md:justify-start">
+                                        <MapPin className="text-[#c13025] shrink-0" size={20} strokeWidth={2.5} />
+                                        <span className="text-sm md:text-[14px] font-semibold text-[#1a1a1a] tracking-wide">{clinic}</span>
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
-                        <div className="text-left md:text-center">
-                            <h2 className="font-heading font-bold text-5xl md:text-6xl text-600 drop-shadow-sm mb-1">25</h2>
-                            <p className="text-[10px] sm:text-xs text-gray-500 font-bold uppercase tracking-widest mt-2">Pencapaian kesehatan terbaik Se-Indonesia</p>
-                        </div>
-                    </motion.div>
+                    </div>
                 </div>
-            </section>
+            </motion.section>
 
             {/* Partner Logos Carousel */}
             <div className="w-full bg-[#CEDFFF] py-8 mt-24 mb-12 overflow-hidden relative">

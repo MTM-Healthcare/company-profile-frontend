@@ -13,31 +13,25 @@ export function AboutHero() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5 }}
-                    className="md:w-1/2"
+                    className="md:w-[55%] lg:w-[50%]"
                 >
-                    <h1 className="font-heading font-extrabold text-[40px] md:text-[52px] lg:text-[64px] text-[#242e4c] mb-6 leading-[1.1] tracking-tight">
-                        Pelayanan Kesehatan <br />
-                        <span className="text-[#B21F24]">yang Terpercaya</span>
+                    <h1 className="font-heading font-extrabold text-[36px] md:text-[46px] lg:text-[54px] text-[#1a1a1a] mb-4 leading-[1.2] tracking-tight pr-0 lg:pr-10">
+                        Layanan Kesehatan <br />
+                        <span className="text-[#a52126]">Terpercaya</span> untuk Anda <br />
+                        dan Keluarga
                     </h1>
-                    <p className="text-base md:text-lg text-[#242e4c] mb-12 leading-relaxed max-w-[500px] font-medium font-sans">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    <p className="text-[20px] md:text-[24px] font-bold text-[#a52126] mb-8">
+                        #TemanSehatKamu
+                    </p>
+                    
+                    <p className="text-[14px] md:text-[15px] font-medium text-[#1a1a1a] leading-[1.6] max-w-[520px] mb-12">
+                        MTM Healthcare hadir untuk memberikan layanan kesehatan yang mudah diakses, terpercaya, dan berfokus pada kebutuhan masyarakat. Kami mengembangkan jaringan layanan kesehatan yang mencakup apotek, klinik, serta berbagai solusi kesehatan lainnya untuk membantu masyarakat mendapatkan perawatan yang tepat
                     </p>
 
-                    <div className="flex gap-16 mb-8 mt-4">
-                        <div className="flex flex-col">
-                            <h2 className="font-heading font-extrabold text-6xl text-[#1a202c]">100+</h2>
-                            <p className="text-[12px] text-[#4a5568] font-medium leading-tight mt-3">Kerja sama dengan ratusan<br />petugas kesehatan profesional</p>
-                        </div>
-                        <div className="flex flex-col">
-                            <h2 className="font-heading font-extrabold text-6xl text-[#1a202c]">25</h2>
-                            <p className="text-[12px] text-[#4a5568] font-medium leading-tight mt-3">Pencapaian kesehatan terbaik<br />Se-Indonesia</p>
-                        </div>
-                    </div>
-
-                    <div className="flex flex-wrap gap-5 text-[13px] font-medium text-[#718096] mt-10">
-                        <div className="flex items-center gap-2"><CheckCircle className="text-green-500 w-[18px] h-[18px]" strokeWidth={2} /> Obat Berkualitas</div>
-                        <div className="flex items-center gap-2"><CheckCircle className="text-green-500 w-[18px] h-[18px]" strokeWidth={2} /> Harga Terjangkau</div>
-                        <div className="flex items-center gap-2"><CheckCircle className="text-green-500 w-[18px] h-[18px]" strokeWidth={2} /> Pelayanan Ramah</div>
+                    <div className="flex flex-wrap gap-5 text-[12px] md:text-[13px] font-semibold text-[#8a8a8a] mt-4">
+                        <div className="flex items-center gap-2"><CheckCircle className="text-[#3fc979] w-[18px] h-[18px]" strokeWidth={2.5} /> Obat Berkualitas</div>
+                        <div className="flex items-center gap-2"><CheckCircle className="text-[#3fc979] w-[18px] h-[18px]" strokeWidth={2.5} /> Harga Terjangkau</div>
+                        <div className="flex items-center gap-2"><CheckCircle className="text-[#3fc979] w-[18px] h-[18px]" strokeWidth={2.5} /> Pelayanan Ramah</div>
                     </div>
                 </motion.div>
 
@@ -46,10 +40,10 @@ export function AboutHero() {
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
-                    className="md:w-1/2 relative w-full mt-16 md:mt-0"
+                    className="md:w-[45%] lg:w-[50%] relative w-full mt-16 md:mt-0"
                 >
-                    <div className="relative rounded-[32px] overflow-hidden w-full max-w-[500px] mx-auto aspect-[4/4.5] shadow-xl">
-                        <Image src="/about-hero.png" alt="Nursing Service" fill className="object-cover" />
+                    <div className="relative rounded-[2rem] overflow-hidden w-full h-[380px] md:h-[500px] shadow-sm ml-auto">
+                        <Image src="/about-hero.png" alt="Nursing Service" fill className="object-cover object-top" />
                     </div>
 
                     {/* Floating Card 1 */}
@@ -57,14 +51,14 @@ export function AboutHero() {
                         initial={{ y: 0 }}
                         animate={{ y: [0, -8, 0] }}
                         transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
-                        className="absolute bottom-[20%] lg:bottom-[25%] -left-6 md:-left-16 bg-white rounded-2xl px-5 py-4 shadow-[0_8px_30px_rgb(0,0,0,0.08)] flex items-center gap-4 z-10"
+                        className="absolute bottom-[20%] lg:bottom-[15%] left-0 md:-left-12 lg:-left-24 bg-white rounded-xl px-4 py-3 md:px-5 md:py-4 shadow-[0_8px_30px_rgb(0,0,0,0.06)] flex items-center gap-4 z-10 border border-gray-100/50"
                     >
-                        <div className="w-12 h-12 rounded-xl bg-[#e6f6ee] flex items-center justify-center text-[#38a169]">
-                            <Star className="w-6 h-6" strokeWidth={2} />
+                        <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-[#e6f4ea] flex items-center justify-center text-[#3fc979] shrink-0">
+                            <Star className="w-5 h-5 md:w-6 md:h-6" strokeWidth={2.5} />
                         </div>
-                        <div className="pr-4">
-                            <h4 className="font-heading font-extrabold text-[22px] text-[#1a202c] leading-tight">100%</h4>
-                            <p className="text-[11px] text-[#718096] font-medium whitespace-nowrap">Kepuasan Pasien</p>
+                        <div className="pr-4 md:pr-6 text-left">
+                            <h4 className="font-heading font-extrabold text-[16px] md:text-[20px] text-[#1a1a1a] leading-tight mb-1 md:mb-0">100%</h4>
+                            <p className="text-[9px] md:text-[11px] text-[#8a8a8a] font-medium whitespace-nowrap">Kepuasan Pasien</p>
                         </div>
                     </motion.div>
 
@@ -73,14 +67,14 @@ export function AboutHero() {
                         initial={{ y: 0 }}
                         animate={{ y: [0, -8, 0] }}
                         transition={{ repeat: Infinity, duration: 4.5, ease: 'easeInOut', delay: 1 }}
-                        className="absolute -bottom-8 right-0 md:-right-8 bg-white rounded-2xl px-5 py-4 shadow-[0_8px_30px_rgb(0,0,0,0.08)] flex items-center gap-4 z-10"
+                        className="absolute -bottom-6 md:-bottom-8 right-4 md:right-8 bg-white rounded-xl px-4 py-3 md:px-5 md:py-4 shadow-[0_8px_30px_rgb(0,0,0,0.06)] flex items-center gap-4 z-10 border border-gray-100/50"
                     >
-                        <div className="w-12 h-12 rounded-xl bg-[#e6f6ee] flex items-center justify-center text-[#38a169]">
-                            <Star className="w-6 h-6" strokeWidth={2} />
+                        <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-[#e6f4ea] flex items-center justify-center text-[#3fc979] shrink-0">
+                            <Star className="w-5 h-5 md:w-6 md:h-6" strokeWidth={2.5} />
                         </div>
-                        <div className="pr-4">
-                            <h4 className="font-heading font-extrabold text-[18px] text-[#1a202c] leading-tight mb-0.5">Profesionalitas</h4>
-                            <p className="text-[11px] text-[#718096] font-medium whitespace-nowrap">Kinerja yang sudah terverifikasi profesional</p>
+                        <div className="pr-2 md:pr-4 text-left">
+                            <h4 className="font-heading font-extrabold text-[15px] md:text-[18px] text-[#1a1a1a] leading-tight mb-1 md:mb-0.5">Profesionalitas</h4>
+                            <p className="text-[9px] md:text-[11px] text-[#8a8a8a] font-medium whitespace-nowrap">Kinerja yang sudah terverifikasi profesional</p>
                         </div>
                     </motion.div>
                 </motion.div>

@@ -48,12 +48,17 @@ export function EventsSlider({
                             {badgeText}
                         </span>
                     )}
-                    <h2 className="text-3xl md:text-5xl font-heading font-bold text-slate-900 mb-6">
+                    <h2 className="text-3xl md:text-4xl font-heading font-bold text-[#1a1a1a] mb-6">
                         {title || "MTM Events"}
                     </h2>
-                    <p className="text-slate-600 max-w-2xl mx-auto text-lg leading-relaxed">
-                        {description || "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip."}
-                    </p>
+                    <div className="text-[#1a1a1a] max-w-4xl mx-auto text-[14px] md:text-[15px] leading-[1.6] font-medium space-y-4">
+                        <p>
+                            {description || "MTM Healthcare secara rutin menyelenggarakan berbagai kegiatan kesehatan, mulai dari edukasi medis, pemeriksaan kesehatan, hingga program kolaborasi dengan tenaga kesehatan dan masyarakat. Melalui berbagai kegiatan ini, kami ingin membantu masyarakat lebih memahami kesehatan mereka dan mendapatkan akses layanan kesehatan yang lebih baik."}
+                        </p>
+                        <p>
+                            Ikuti kegiatan MTM Healthcare dan jadilah bagian dari komunitas yang peduli terhadap kesehatan!
+                        </p>
+                    </div>
                 </motion.div>
             )}
 
