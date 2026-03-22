@@ -18,7 +18,7 @@ export function Footer() {
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pb-6 md:pb-0">
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-8 justify-between h-full">
-                    
+
                     {/* Column 1: Logo & Socials */}
                     <div className="col-span-1 md:col-span-12 lg:col-span-3 flex flex-col h-full">
                         <div>
@@ -51,15 +51,11 @@ export function Footer() {
                                 <a href="#" className="w-8 h-8 md:w-9 md:h-9 rounded shrink-0 bg-[#0077B5] shadow-sm flex items-center justify-center text-white hover:scale-105 transition-transform">
                                     <Linkedin size={18} fill="currentColor" stroke="none" />
                                 </a>
-                                {/* X / Twitter */}
+                                {/* TikTok */}
                                 <a href="#" className="w-8 h-8 md:w-9 md:h-9 rounded shrink-0 bg-black shadow-sm flex items-center justify-center text-white hover:scale-105 transition-transform">
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M19.589 6.686a4.793 4.793 0 0 1-3.97-1.535 4.78 4.78 0 0 1-1.148-3.151h-3.832v15.004a3.832 3.832 0 0 1-7.663 0 3.832 3.832 0 0 1 3.832-3.832 3.82 3.82 0 0 1 1.725.412V9.663a7.643 7.643 0 0 0-1.725-.2 7.663 7.663 0 0 0 0 15.326 7.663 7.663 0 0 0 7.663-7.663V8.724a8.667 8.667 0 0 0 5.118 1.68v-3.718z" />
                                     </svg>
-                                </a>
-                                {/* Facebook */}
-                                <a href="#" className="w-8 h-8 md:w-9 md:h-9 rounded shrink-0 bg-[#1877F2] shadow-sm flex items-center justify-center text-white hover:scale-105 transition-transform">
-                                    <Facebook size={18} fill="currentColor" stroke="none" />
                                 </a>
                             </div>
                         </div>
@@ -75,7 +71,7 @@ export function Footer() {
                             <li><Link href="/" className="hover:text-blue-600 transition">Home</Link></li>
                             <li><Link href="/about" className="hover:text-blue-600 transition">About Us</Link></li>
                             <li><Link href="/blog-events" className="hover:text-blue-600 transition">Blog & Events</Link></li>
-                            <li><Link href="/products" className="hover:text-blue-600 transition">Product</Link></li>
+                            <li><Link href="/health-service" className="hover:text-blue-600 transition">Product</Link></li>
                             <li><Link href="/contact" className="hover:text-blue-600 transition">Contact</Link></li>
                         </ul>
                     </div>
@@ -94,25 +90,28 @@ export function Footer() {
 
                     {/* Column 4: Check Our Instagram */}
                     <div className="col-span-1 md:col-span-4 lg:col-span-5 flex items-start gap-4 lg:gap-8 justify-start lg:justify-end lg:pl-4 relative">
-                        <div className="relative z-10">
-                            <h4 className="font-heading font-extrabold text-[#1a1a1a] text-[20px] md:text-[24px] leading-[1.2] mt-8 whitespace-nowrap text-left relative">
-                                Check Our<br />Instagram
+                        <div className="relative z-10 flex flex-col mt-8">
+                            <h4 className="font-heading font-extrabold text-[#1a1a1a] text-[18px] md:text-[20px] mb-4">
+                                Ikuti Media<br />Social Kami
                             </h4>
-                            {/* Decorative Arrow */}
-                            <div className="absolute top-[70px] right-[-80px] w-[80px] h-[80px] md:w-[120px] md:h-[120px] opacity-80 pointer-events-none hidden md:block">
-                                <Image
-                                    src="/Arrow.png"
-                                    alt="Pointer arrow"
-                                    fill
-                                    className="object-contain drop-shadow-sm"
-                                    unoptimized
-                                />
+                            <div className="flex items-center gap-2 mt-1">
+                                <div className="w-6 h-6 rounded shrink-0 bg-gradient-to-tr from-[#f09433] via-[#e6683c] to-[#bc1888] flex items-center justify-center text-white">
+                                    <Instagram size={12} strokeWidth={2.5} />
+                                </div>
+                                <div className="w-6 h-6 rounded shrink-0 bg-black flex items-center justify-center text-white">
+                                    <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M19.589 6.686a4.793 4.793 0 0 1-3.97-1.535 4.78 4.78 0 0 1-1.148-3.151h-3.832v15.004a3.832 3.832 0 0 1-7.663 0 3.832 3.832 0 0 1 3.832-3.832 3.82 3.82 0 0 1 1.725.412V9.663a7.643 7.643 0 0 0-1.725-.2 7.663 7.663 0 0 0 0 15.326 7.663 7.663 0 0 0 7.663-7.663V8.724a8.667 8.667 0 0 0 5.118 1.68v-3.718z" />
+                                    </svg>
+                                </div>
+                                <span className="text-[13px] md:text-[14px] font-bold text-[#1a1a1a] leading-none tracking-tight">
+                                    @mtm.healthcare
+                                </span>
                             </div>
                         </div>
                         <div className="relative w-[180px] h-[340px] md:w-[220px] md:h-[400px] shrink-0 -mt-10 lg:-mt-16 z-0">
                             <Image
                                 src="/check-instagram-footer.png"
-                                alt="Check Our Instagram"
+                                alt="Instagram Preview"
                                 fill
                                 className="object-contain object-top"
                                 quality={100}

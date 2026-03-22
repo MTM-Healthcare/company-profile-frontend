@@ -2,9 +2,10 @@ import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { Hero } from '@/components/sections/Hero';
 import { About } from '@/components/sections/About';
-import { ProductsSlider } from '@/components/sections/ProductsSlider';
+import { OurPartner } from '@/components/sections/OurPartner';
 import { EventsSlider } from '@/components/sections/EventsSlider';
 import { Achievements } from '@/components/sections/Achievements';
+import { BookingCTA } from '@/components/sections/BookingCTA';
 import { Projects } from '@/components/sections/Projects';
 import { FAQ } from '@/components/sections/FAQ';
 import { Contact } from '@/components/sections/Contact';
@@ -25,10 +26,10 @@ export default function Home() {
 
                 {/* Pair 1 — Normal (white) */}
                 <About />
-                <ProductsSlider />
+                <OurPartner />
 
                 {/* Pair 2 — Highlighted */}
-                <div className="w-full relative overflow-hidden mt-32 pb-16">
+                <div className="w-full relative overflow-hidden mt-8 pb-16">
                     {/* Ambient blobs */}
                     <div className="absolute inset-0 pointer-events-none -z-0">
                         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-100/25 rounded-full blur-[130px] -translate-y-1/4 translate-x-1/4" />
@@ -36,9 +37,12 @@ export default function Home() {
                     </div>
                     {/* Subtle top/bottom fade bands */}
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-50/50 to-transparent pointer-events-none -z-0" />
-                    <div className="relative z-10 -mt-32">
-                        <EventsSlider slides={sliderEvents} />
+                    <div className="relative z-10">
                         <Achievements />
+                        <div className="mt-20">
+                            <BookingCTA />
+                        </div>
+                        <EventsSlider slides={sliderEvents} />
                     </div>
                 </div>
 
@@ -56,7 +60,6 @@ export default function Home() {
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-50/50 to-transparent pointer-events-none -z-0" />
                     <div className="relative z-10 -mt-32">
                         <Contact />
-                        <Newsletter />
                     </div>
                 </div>
 

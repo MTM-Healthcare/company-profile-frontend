@@ -18,11 +18,9 @@ export function Navbar() {
     }, []);
     const navLinks = [
         { name: 'Home', href: '/' },
-        { name: 'About Us', href: '/about' },
-        { name: 'Products', href: '/products' },
-        // { name: 'Blog & Events', href: '/blog-events' },
-        // { name: 'Achievements', href: '/achievements' },
-        { name: 'Contact', href: '/contact' },
+        { name: 'Layanan Kami', href: '/health-service' },
+        { name: 'Tentang Kami', href: '/about' },
+        { name: 'Hubungi Kami', href: '/contact' },
     ];
 
     return (
@@ -46,12 +44,12 @@ export function Navbar() {
                     </Link>
 
                     {/* Desktop Menu (Pushed to Right) */}
-                    <div className="hidden md:flex space-x-8 items-center ml-auto mr-4">
+                    <div className="hidden md:flex space-x-8 items-center ml-auto mr-8">
                         {navLinks.map((link, idx) => (
                             <Link
                                 key={idx}
                                 href={link.href}
-                                className={`font-medium text-sm transition-colors duration-200 relative group ${pathname === link.href ? 'text-[#8E151F]' : 'text-gray-600 hover:text-[#8E151F]'}`}
+                                className={`font-medium text-sm transition-colors duration-200 relative group ${pathname === link.href ? 'text-[#8E151F] font-semibold' : 'text-gray-600 hover:text-[#8E151F]'}`}
                             >
                                 {link.name}
                                 <span className={`absolute -bottom-1 left-0 h-0.5 rounded-full bg-[#8E151F] transition-all duration-300 ${pathname === link.href ? 'w-full' : 'w-0 group-hover:w-full'}`} />
@@ -61,6 +59,12 @@ export function Navbar() {
 
                     {/* CTA Button + Mobile Toggle */}
                     <div className="flex items-center gap-3">
+                        <Link 
+                            href="/contact" 
+                            className="hidden md:inline-flex bg-[#8E151F] hover:bg-[#771119] text-white px-5 py-2.5 rounded-md text-sm font-medium transition-colors"
+                        >
+                            Pesan Layanan Kesehatan
+                        </Link>
                         <div className="md:hidden">
                             <button
                                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}

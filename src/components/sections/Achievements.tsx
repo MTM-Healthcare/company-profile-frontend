@@ -23,7 +23,7 @@ const achievementsData = [
 
 export function Achievements() {
     return (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24 text-center">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             {/* Header Content */}
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -32,12 +32,12 @@ export function Achievements() {
                 transition={{ duration: 0.6 }}
                 className="max-w-4xl mx-auto mb-16"
             >
-                <h2 className="font-heading font-bold text-3xl md:text-4xl text-[#1a1a1a] mb-6">
+                <h1 className="font-heading font-bold text-3xl md:text-4xl text-[#1a1a1a] mb-6">
                     Kepercayaan yang Telah Kami Bangun
-                </h2>
-                <p className="text-[#1a1a1a] text-[14px] md:text-[15px] leading-[1.6] font-medium">
+                </h1>
+                <h2 className="text-[#1a1a1a] text-[14px] md:text-[15px] leading-[1.6] font-medium">
                     MTM Healthcare terus berkomitmen menghadirkan layanan kesehatan yang berkualitas, profesional, dan terpercaya. Berbagai pencapaian ini menjadi bukti komitmen kami dalam memberikan pelayanan kesehatan terbaik bagi masyarakat.
-                </p>
+                </h2>
             </motion.div>
 
             {/* Cards Grid */}
