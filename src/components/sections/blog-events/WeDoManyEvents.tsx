@@ -10,7 +10,7 @@ const mockEvents = Array.from({ length: 4 }).map((_, i) => ({
 export function WeDoManyEvents() {
     return (
         <section className="w-full bg-[#dbe8ff] py-16 md:py-24">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto px-[45px]">
                 
                 {/* Header Section */}
                 <div className="flex flex-col-reverse md:flex-row justify-between items-start md:items-start gap-8 mb-16">
@@ -56,3 +56,4 @@ export function WeDoManyEvents() {
         </section>
     );
 }
+

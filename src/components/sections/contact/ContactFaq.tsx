@@ -10,7 +10,7 @@ export function ContactFaq() {
     const [openIndex, setOpenIndex] = React.useState<number | null>(0); // 0 corresponds to the first item
 
     return (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-32">
+        <section className="max-w-7xl mx-auto px-[45px] mt-32">
 
             {/* Header — right-aligned */}
             <motion.div
@@ -101,3 +101,4 @@ export function ContactFaq() {
         </section>
     );
 }
+

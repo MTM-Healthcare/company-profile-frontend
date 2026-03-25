@@ -11,7 +11,7 @@ export function CompanyDetail() {
     ];
 
     return (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-32">
+        <section className="max-w-7xl mx-auto px-[45px] mt-32">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
                 <div>
                     <h2 className="font-heading font-bold text-3xl text-brand-dark mb-4">Company Detail</h2>
@@ -51,3 +51,4 @@ export function CompanyDetail() {
         </section>
     );
 }
+

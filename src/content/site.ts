@@ -15,3 +15,4 @@ export const siteConfig = {
         workingHours: 'Senin - Minggu: 08:00 - 22:00',
     },
 };
+

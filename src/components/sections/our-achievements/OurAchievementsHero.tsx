@@ -5,7 +5,7 @@ import { Trophy } from 'lucide-react';
 
 export function OurAchievementsHero() {
     return (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-20">
+        <section className="max-w-7xl mx-auto px-[45px] pt-8 pb-20">
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="flex flex-col items-center text-center">
                 <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5, delay: 0.1 }} className="inline-flex items-center gap-2 bg-blue-50 border border-blue-100 text-blue-700 text-xs font-semibold tracking-widest uppercase px-5 py-2 rounded-full mb-7 shadow-sm">
                     <Trophy size={13} className="text-blue-500" /> Our Portfolio
@@ -21,3 +21,4 @@ export function OurAchievementsHero() {
         </section>
     );
 }
+

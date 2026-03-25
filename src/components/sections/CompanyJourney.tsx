@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 export function CompanyJourney() {
     return (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24">
+        <section className="max-w-7xl mx-auto px-[45px] mt-24">
             {/* Section Header */}
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -34,3 +34,4 @@ export function CompanyJourney() {
         </section>
     );
 }
+

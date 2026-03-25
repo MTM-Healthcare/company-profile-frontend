@@ -24,3 +24,4 @@ export const productsConfig = [
         price: 'Rp 15.000',
     },
 ];
+

@@ -37,7 +37,7 @@ const stagger = { visible: { transition: { staggerChildren: 0.1 } }, hidden: {} 
 
 export function MtmBlogspotFeatured() {
     return (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-28">
+        <section className="max-w-7xl mx-auto px-[45px] mb-28">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
                 <motion.div variants={fadeLeft as any} initial="hidden" whileInView="visible" viewport={{ once: true }} className="lg:col-span-7 flex flex-col group cursor-pointer">
                     <div className="w-full h-[320px] md:h-[430px] rounded-[2.5rem] overflow-hidden mb-7 relative shadow-2xl shadow-blue-100/60 border border-white/80">
@@ -67,3 +67,4 @@ export function MtmBlogspotFeatured() {
         </section>
     );
 }
+

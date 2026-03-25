@@ -10,3 +10,4 @@ export const blogPostsData = [
     { id: 3, title: "Guide to Choosing the Right Cough Medicine", desc: "Not all cough medicines are the same. Understand your cough type for more effective treatment.", category: "Pharmacy", image: "https://images.unsplash.com/photo-1587854692152-cbe660dbde88?auto=format&fit=crop&q=80&w=400" },
     { id: 4, title: "Benefits of Light Exercise for Office Workers", desc: "Sitting for too long has negative impacts. Here are light exercises you can do at your desk.", category: "Lifestyle", image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&q=80&w=400" },
 ];
+

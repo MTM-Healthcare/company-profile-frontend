@@ -19,7 +19,7 @@ export function ContactHero() {
 
             {/* Info Bar */}
             <div className="w-full">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-10">
+                <div className="max-w-7xl mx-auto px-[45px] py-8 md:py-10">
                     <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 md:gap-4 border-b border-white/20 pb-4 md:pb-0 md:border-none">
 
                         {/* Left: Logo & Text */}
@@ -42,25 +42,20 @@ export function ContactHero() {
                         {/* Right: Social Icons */}
                         <div className="flex gap-4 items-center self-start md:self-center">
                             {/* Instagram */}
-                            <a href="#" className="w-10 h-10 md:w-12 md:h-12 rounded-[12px] bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 flex items-center justify-center text-white shadow-sm hover:shadow-md hover:-translate-y-1 transition-all">
-                                <Instagram size={24} strokeWidth={2} />
+                            <a href="https://www.instagram.com/mtm.healthcare/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 md:w-12 md:h-12 relative shrink-0 hover:scale-105 transition-transform">
+                                <Image src="/ig-icon.png" alt="Instagram" fill className="object-contain" />
                             </a>
                             {/* WhatsApp */}
-                            <a href="#" className="w-10 h-10 md:w-12 md:h-12 rounded-[12px] bg-[#25d366] flex items-center justify-center text-white shadow-sm hover:shadow-md hover:-translate-y-1 transition-all">
-                                <MessageCircle size={24} strokeWidth={2} />
+                            <a href="#" className="w-10 h-10 md:w-12 md:h-12 relative shrink-0 hover:scale-105 transition-transform">
+                                <Image src="/wa-icon.png" alt="WhatsApp" fill className="object-contain" />
                             </a>
                             {/* LinkedIn */}
-                            <a href="#" className="w-10 h-10 md:w-12 md:h-12 rounded-[12px] bg-[#0077b5] flex items-center justify-center text-white shadow-sm hover:shadow-md hover:-translate-y-1 transition-all">
-                                <Linkedin size={22} strokeWidth={2} fill="currentColor" className="text-white" />
+                            <a href="#" className="w-10 h-10 md:w-12 md:h-12 relative shrink-0 hover:scale-105 transition-transform">
+                                <Image src="/linkedin-icon.png" alt="LinkedIn" fill className="object-contain" />
                             </a>
-                            {/* X (Twitter) */}
-                            <a href="#" className="w-10 h-10 md:w-12 md:h-12 rounded-[12px] bg-black flex items-center justify-center text-white shadow-sm hover:shadow-md hover:-translate-y-1 transition-all">
-                                {/* Next.js doesn't have an exact matching X icon in lucide-react natively, so using an alternative icon styling to simulate it */}
-                                <Twitter size={22} strokeWidth={0} fill="currentColor" />
-                            </a>
-                            {/* Facebook */}
-                            <a href="#" className="w-10 h-10 md:w-12 md:h-12 rounded-[12px] bg-[#1877f2] flex items-center justify-center text-white shadow-sm hover:shadow-md hover:-translate-y-1 transition-all">
-                                <Facebook size={26} strokeWidth={0} fill="currentColor" />
+                            {/* TikTok */}
+                            <a href="#" className="w-10 h-10 md:w-12 md:h-12 relative shrink-0 hover:scale-105 transition-transform">
+                                <Image src="/tiktok-icon.png" alt="TikTok" fill className="object-contain" />
                             </a>
                         </div>
 

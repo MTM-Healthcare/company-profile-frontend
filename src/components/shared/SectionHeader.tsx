@@ -44,3 +44,4 @@ export function SectionHeader({ badgeText, badgeIcon, title, description, align 
         </motion.div>
     );
 }
+

@@ -41,7 +41,7 @@ export default function ServicesSelectionPage() {
                 {/* Subtle top/bottom fade bands */}
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-50/50 to-transparent pointer-events-none -z-0" />
                 
-                <div className="relative z-10 w-full pt-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="relative z-10 w-full pt-32 max-w-7xl mx-auto px-[45px]">
                     
                     {/* 1. Page Header */}
                     <div className="flex flex-col mb-8 w-full max-w-[900px] mx-auto">

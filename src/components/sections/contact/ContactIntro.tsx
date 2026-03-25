@@ -7,7 +7,7 @@ import { socialLinks } from '@/data/socials';
 
 export function ContactIntro() {
     return (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 md:-mt-14 relative z-20 pb-4">
+        <section className="max-w-7xl mx-auto px-[45px] -mt-10 md:-mt-14 relative z-20 pb-4">
             <motion.div
                 variants={fadeUp as any}
                 initial="hidden"
@@ -44,3 +44,4 @@ export function ContactIntro() {
         </section>
     );
 }
+

@@ -23,7 +23,7 @@ const achievementsData = [
 
 export function Achievements() {
     return (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <section className="max-w-7xl mx-auto px-[45px] text-center">
             {/* Header Content */}
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -66,3 +66,4 @@ export function Achievements() {
         </section>
     );
 }
+

@@ -70,7 +70,7 @@ export default function AllHealthServicesPage() {
         <div className="flex flex-col min-h-screen relative overflow-hidden">
             <Navbar />
 
-            <main className="flex-1 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 flex flex-col items-center overflow-hidden">
+            <main className="flex-1 pb-20 max-w-7xl mx-auto px-[45px] w-full relative z-10 flex flex-col items-center overflow-hidden">
                 {/* Ambient blobs from page.tsx */}
                 <div className="absolute inset-0 pointer-events-none -z-0">
                     <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-100/25 rounded-full blur-[130px] -translate-y-1/4 translate-x-1/4" />
@@ -284,3 +284,4 @@ export default function AllHealthServicesPage() {
         </div>
     );
 }
+

@@ -5,7 +5,7 @@ import { Stethoscope, CalendarCheck, BadgeCheck } from 'lucide-react';
 
 export function DoctorHighlight() {
     return (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-28">
+        <section className="max-w-7xl mx-auto px-[45px] mt-28">
             <div className="flex flex-col md:flex-row items-center gap-16">
 
                 {/* Image with overlapping card */}
@@ -80,3 +80,4 @@ export function DoctorHighlight() {
         </section>
     );
 }
+

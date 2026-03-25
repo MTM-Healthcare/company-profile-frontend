@@ -18,7 +18,7 @@ export function BlogHero() {
 
             {/* Info Section */}
             <div className="w-full">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+                <div className="max-w-7xl mx-auto px-[45px] py-12 md:py-16">
                     <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-10">
                         {/* Left: Logo & Text */}
                         <div className="md:w-1/2">
@@ -61,3 +61,4 @@ export function BlogHero() {
         </section>
     );
 }
+

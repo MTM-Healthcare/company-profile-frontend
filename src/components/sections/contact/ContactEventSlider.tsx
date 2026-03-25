@@ -35,7 +35,7 @@ export function ContactEventSlider({ images }: ContactEventSliderProps) {
 
     return (
         <div className="w-full py-16 md:py-20 relative">
-            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative group">
+            <div className="max-w-6xl mx-auto px-[45px] relative group">
                 
                 {/* Main Image Container */}
                 <div className="w-full relative aspect-[16/9] md:aspect-[21/9] rounded-[24px] overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.08)] bg-white">
@@ -99,3 +99,4 @@ export function ContactEventSlider({ images }: ContactEventSliderProps) {
         </div>
     );
 }
+

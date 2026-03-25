@@ -49,7 +49,7 @@ export default function CompanyEventDetailPage() {
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-slate-900/10" />
 
                     <div className="absolute bottom-0 inset-x-0 w-full pb-16">
-                        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="max-w-4xl mx-auto px-[45px]">
                             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
                                 <Link href="/company-events" className="inline-flex items-center gap-2 text-white/70 hover:text-white text-sm font-semibold mb-6 transition-colors">
                                     <ArrowLeft size={16} /> Back to Events
@@ -67,7 +67,7 @@ export default function CompanyEventDetailPage() {
                 </section>
 
                 {/* ── EVENT DETAILS ── */}
-                <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <section className="max-w-4xl mx-auto px-[45px] py-16">
 
                     {/* Quick Info Bar */}
                     <motion.div variants={fadeUp} initial="hidden" animate="visible" className="grid grid-cols-2 md:grid-cols-4 gap-6 bg-blue-50/50 p-6 rounded-3xl mb-16 border border-blue-100/50">
@@ -121,7 +121,7 @@ export default function CompanyEventDetailPage() {
 
                 {/* ── SEE ANOTHER EVENTS ── */}
                 <section className="bg-[#EAF3FA] py-24 border-t border-blue-50">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="max-w-7xl mx-auto px-[45px]">
 
                         <div className="flex items-end justify-between mb-12">
                             <div>
@@ -162,3 +162,4 @@ export default function CompanyEventDetailPage() {
         </div>
     );
 }
+

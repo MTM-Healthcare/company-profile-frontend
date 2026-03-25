@@ -40,7 +40,7 @@ export function EventsSlider({
     const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
 
     return (
-        <section className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center ${hideHeader ? '' : 'mt-32'}`}>
+        <section className={`max-w-7xl mx-auto px-[45px] text-center ${hideHeader ? '' : 'mt-32'}`}>
             {!hideHeader && (
                 <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mb-12">
                     {badgeText && (
@@ -138,3 +138,4 @@ export function EventsSlider({
         </section>
     );
 }
+

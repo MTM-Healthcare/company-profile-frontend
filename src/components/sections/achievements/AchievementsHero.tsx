@@ -20,7 +20,7 @@ const waveTransforms = [
 export function AchievementsHero() {
     return (
         <section className="w-full pt-32 pb-24 overflow-hidden relative">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div className="max-w-7xl mx-auto px-[45px] text-center relative z-10">
 
                 {/* ── Text Intro ── */}
                 <motion.div variants={stagger} initial="hidden" animate="visible" className="flex flex-col items-center">
@@ -81,3 +81,4 @@ export function AchievementsHero() {
         </section>
     );
 }
+

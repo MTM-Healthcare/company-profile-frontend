@@ -9,3 +9,4 @@ export default function sitemap() {
         // We will dynamically add paths here when they are built
     ];
 }
+

@@ -7,3 +7,4 @@ export const socialLinks = [
     { Icon: Twitter, bg: 'bg-gradient-to-br from-gray-700 to-gray-900', href: '#' },
     { Icon: Facebook, bg: 'bg-gradient-to-br from-blue-600 to-blue-800', href: '#' },
 ];
+

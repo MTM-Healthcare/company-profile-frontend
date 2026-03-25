@@ -20,3 +20,4 @@ export const stagger: Variants = {
     hidden: {},
     visible: { transition: { staggerChildren: 0.10 } }
 };
+

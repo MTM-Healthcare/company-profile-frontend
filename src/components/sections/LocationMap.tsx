@@ -2,7 +2,7 @@ import { MapPin } from 'lucide-react';
 
 export function LocationMap() {
     return (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-28 mb-16">
+        <section className="max-w-7xl mx-auto px-[45px] mt-28 mb-16">
             <div className="text-center mb-6">
                 <div className="inline-flex items-center gap-2 bg-blue-100/80 backdrop-blur-sm text-blue-700 text-xs font-semibold tracking-wider uppercase px-4 py-1.5 rounded-full mb-3">
                     <MapPin size={13} />
@@ -26,3 +26,4 @@ export function LocationMap() {
         </section>
     );
 }
+

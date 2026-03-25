@@ -105,3 +105,4 @@ export function FaqAccordion({ items, variant = 'default' }: FaqAccordionProps) 
         </div>
     );
 }
+

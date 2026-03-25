@@ -33,7 +33,7 @@ const stagger = { visible: { transition: { staggerChildren: 0.1 } }, hidden: {} 
 
 export function OurAchievementsFeatured() {
     return (
-        <section className="w-full pt-16 pb-12 px-4 sm:px-6 lg:px-8">
+        <section className="w-full pt-16 pb-12 px-[45px]">
             <div className="max-w-7xl mx-auto">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
                     
@@ -100,3 +100,4 @@ export function OurAchievementsFeatured() {
         </section>
     );
 }
+

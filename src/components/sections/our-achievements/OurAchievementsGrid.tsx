@@ -30,7 +30,7 @@ const gridProjects = [
 
 export function OurAchievementsGrid() {
     return (
-        <section className="w-full pb-24 pt-12 px-4 sm:px-6 lg:px-8">
+        <section className="w-full pb-24 pt-12 px-[45px]">
             <div className="max-w-7xl mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
                     {gridProjects.map((proj, idx) => (
@@ -53,3 +53,4 @@ export function OurAchievementsGrid() {
         </section>
     );
 }
+

@@ -24,7 +24,7 @@ export function WhyChooseUs() {
 
     return (
         <section className="w-full bg-[#E5EEFF] py-20 pb-28">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-8">
+            <div className="max-w-7xl mx-auto px-[45px] text-center mt-8">
                 <h2 className="font-heading font-extrabold text-[36px] md:text-[42px] lg:text-[48px] text-[#1a1a1a] mb-5 tracking-tight">Mengapa Kami?</h2>
                 <p className="text-[14px] md:text-[15px] text-[#1a1a1a] font-medium leading-[1.6] max-w-[700px] mx-auto mb-16">
                     MTM Healthcare berkomitmen memberikan layanan kesehatan yang profesional, terpercaya, dan mudah diakses oleh masyarakat.
@@ -53,3 +53,4 @@ export function WhyChooseUs() {
         </section>
     );
 }
+

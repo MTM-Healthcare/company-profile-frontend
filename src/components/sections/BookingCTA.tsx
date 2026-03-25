@@ -22,7 +22,7 @@ export function BookingCTA() {
                 </svg>
             </div>
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="max-w-7xl mx-auto px-[45px] relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     {/* Left Content */}
                     <motion.div
@@ -74,3 +74,4 @@ export function BookingCTA() {
         </section>
     );
 }
+

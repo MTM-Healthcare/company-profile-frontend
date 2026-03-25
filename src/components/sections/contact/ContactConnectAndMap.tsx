@@ -7,7 +7,7 @@ import { socialLinks } from '@/data/socials';
 
 export function ContactConnectAndMap() {
     return (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-32">
+        <section className="max-w-7xl mx-auto px-[45px] mt-32">
             {/* Section header */}
             <motion.div
                 variants={fadeUp as any}
@@ -87,3 +87,4 @@ export function ContactConnectAndMap() {
         </section>
     );
 }
+

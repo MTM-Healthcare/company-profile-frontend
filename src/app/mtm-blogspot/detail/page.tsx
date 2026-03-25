@@ -46,7 +46,7 @@ export default function BlogDetailPage() {
             <main className="flex-grow w-full pt-28 pb-20 relative z-10">
 
                 {/* ── ARTICLE HEADER ── */}
-                <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 mb-12">
+                <section className="max-w-4xl mx-auto px-[45px] mt-10 mb-12">
                     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
                         <Link href="/mtm-blogspot" className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 text-sm font-semibold mb-6 transition-colors">
                             <ArrowLeft size={16} /> Back to Blog
@@ -81,7 +81,7 @@ export default function BlogDetailPage() {
                 </section>
 
                 {/* ── HERO IMAGE ── */}
-                <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+                <section className="max-w-5xl mx-auto px-[45px] mb-16">
                     <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8 }} className="w-full h-[300px] md:h-[500px] relative rounded-[2.5rem] overflow-hidden shadow-2xl shadow-blue-900/10">
                         <Image src={postBase.heroImage} alt={postBase.title} fill className="object-cover" priority />
                         <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent" />
@@ -90,7 +90,7 @@ export default function BlogDetailPage() {
                 </section>
 
                 {/* ── ARTICLE CONTENT ── */}
-                <section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+                <section className="max-w-3xl mx-auto px-[45px]">
                     <div className="prose prose-lg prose-blue max-w-none text-gray-600 leading-relaxed font-serif">
                         <p className="lead text-xl text-gray-700 font-medium mb-8">
                             As digital adoption accelerates across the archipelago, telehealth is no longer just a convenience—it's becoming a fundamental pillar of modern healthcare infrastructure. In this article, we explore how MTM Healthcare's new platform is bridging the gap between patients and specialists.
@@ -146,7 +146,7 @@ export default function BlogDetailPage() {
 
                 {/* ── SEE ANOTHER ARTICLES ── */}
                 <section className="bg-gray-50 mt-24 py-20 border-t border-gray-100">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="max-w-7xl mx-auto px-[45px]">
 
                         <div className="flex items-end justify-between mb-12">
                             <div>
@@ -194,3 +194,4 @@ export default function BlogDetailPage() {
         </div>
     );
 }
+

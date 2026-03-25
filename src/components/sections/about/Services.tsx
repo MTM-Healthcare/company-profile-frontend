@@ -38,7 +38,7 @@ export function Services() {
 
     return (
         <section className="w-full bg-[#CEDFFF] py-24 mt-16">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto px-[45px]">
                 <div className="text-center max-w-[800px] mx-auto mb-16">
                     <h1 className="font-heading font-extrabold text-[36px] md:text-[42px] lg:text-[48px] text-[#1a1a1a] mb-6 tracking-tight">
                         Layanan Kesehatan MTM Healthcare
@@ -74,3 +74,4 @@ export function Services() {
         </section>
     );
 }
+

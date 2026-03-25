@@ -13,7 +13,7 @@ export function About() {
                 transition={{ duration: 0.6 }}
                 className="w-full py-14 mt-16"
             >
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="max-w-7xl mx-auto px-[45px]">
                     <div className="flex flex-col md:flex-row items-center justify-center gap-10 lg:gap-24">
                         {/* Left Side: Logo & Stats */}
                         <div className="flex flex-col gap-8 md:w-1/2 items-center md:items-start pl-0 lg:pl-10">
@@ -96,3 +96,4 @@ export function About() {
         </>
     );
 }
+

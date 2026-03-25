@@ -18,3 +18,4 @@ export const aboutConfig = {
         { name: 'Apotek HKM', logoText: 'Apotek HKM' },
     ]
 };
+

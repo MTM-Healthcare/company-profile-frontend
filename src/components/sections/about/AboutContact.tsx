@@ -46,7 +46,7 @@ export function AboutContact() {
     }, [currentIndex]);
     return (
         <section
-            className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-32 py-14 rounded-3xl"
+            className="max-w-7xl mx-auto px-[45px] mt-32 py-14 rounded-3xl"
             style={{ backgroundColor: '#CEDFFF' }}
         >
             {/* Title â€” right-aligned */}
@@ -216,3 +216,4 @@ export function AboutContact() {
         </section>
     );
 }
+

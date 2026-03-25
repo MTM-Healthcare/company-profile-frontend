@@ -1,6 +1,6 @@
 'use client';
-import { useRef, useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { useRef, useState, useEffect, useCallback } from 'react';
+import { motion, useMotionValue, useAnimation, PanInfo } from 'framer-motion';
 import Image from 'next/image';
 
 const partners = [
@@ -12,53 +12,88 @@ const partners = [
     { id: 6, name: 'Kalbe Farma', image: '/kalbe.png' },
 ];
 
+const CARD_WIDTH = 350;
+const CARD_GAP = 24;
+const STEP = CARD_WIDTH + CARD_GAP;
+
 export function OurPartner() {
-    const scrollContainerRef = useRef<HTMLDivElement>(null);
     const [activeIndex, setActiveIndex] = useState(0);
+    const [trackWidth, setTrackWidth] = useState(0);
+    const trackRef = useRef<HTMLDivElement>(null);
 
-    const handleScroll = () => {
-        if (scrollContainerRef.current) {
-            const { scrollLeft, scrollWidth } = scrollContainerRef.current;
-            const cardWidth = scrollWidth / partners.length;
-            const newIndex = Math.round(scrollLeft / cardWidth);
-            setActiveIndex(newIndex);
-        }
-    };
+    const x = useMotionValue(0);
+    const controls = useAnimation();
+    const autoTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+    const isDragging = useRef(false);
 
-    const scrollToPartner = (index: number) => {
-        if (scrollContainerRef.current) {
-            const current = scrollContainerRef.current;
-            const cardWidth = current.scrollWidth / partners.length;
-            current.scrollTo({
-                left: cardWidth * index,
-                behavior: 'smooth'
-            });
-            setActiveIndex(index);
-        }
-    };
-
+    /* ─── Measure track width ─── */
     useEffect(() => {
-        const timer = setInterval(() => {
-            setActiveIndex((current) => {
-                const next = (current + 1) % partners.length;
-                if (scrollContainerRef.current) {
-                    const container = scrollContainerRef.current;
-                    const cardWidth = container.scrollWidth / partners.length;
-                    container.scrollTo({
-                        left: cardWidth * next,
-                        behavior: 'smooth'
-                    });
-                }
+        const measure = () => {
+            if (trackRef.current) setTrackWidth(trackRef.current.offsetWidth);
+        };
+        measure();
+        window.addEventListener('resize', measure);
+        return () => window.removeEventListener('resize', measure);
+    }, []);
+
+    /* ─── Max drag constraint (negative = dragged left) ─── */
+    const maxDrag = -(partners.length * STEP - STEP - trackWidth + CARD_GAP);
+
+    /* ─── Snap to a specific index with smooth spring ─── */
+    const snapToIndex = useCallback((index: number) => {
+        const target = Math.max(Math.min(-(index * STEP), 0), maxDrag);
+        controls.start({
+            x: target,
+            transition: { type: 'spring', stiffness: 300, damping: 35, mass: 0.8 },
+        });
+        setActiveIndex(index);
+    }, [controls, maxDrag]);
+
+    /* ─── Auto-advance ─── */
+    const startAutoTimer = useCallback(() => {
+        if (autoTimerRef.current) clearInterval(autoTimerRef.current);
+        autoTimerRef.current = setInterval(() => {
+            setActiveIndex((cur) => {
+                const next = (cur + 1) % partners.length;
+                const target = Math.max(-(next * STEP), maxDrag);
+                controls.start({
+                    x: target,
+                    transition: { type: 'spring', stiffness: 300, damping: 35, mass: 0.8 },
+                });
                 return next;
             });
         }, 3000);
+    }, [controls, maxDrag]);
 
-        return () => clearInterval(timer);
-    }, []);
+    useEffect(() => {
+        startAutoTimer();
+        return () => { if (autoTimerRef.current) clearInterval(autoTimerRef.current); };
+    }, [startAutoTimer]);
+
+    /* ─── Drag handlers ─── */
+    const onDragStart = () => {
+        isDragging.current = true;
+        if (autoTimerRef.current) clearInterval(autoTimerRef.current);
+    };
+
+    const onDragEnd = (_: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
+        isDragging.current = false;
+        const currentX = x.get();
+        const velocity = info.velocity.x;
+
+        // Figure out which index to snap to based on position + velocity
+        let targetIndex = Math.round(-currentX / STEP);
+        if (velocity < -200) targetIndex = Math.min(targetIndex + 1, partners.length - 1);
+        if (velocity > 200) targetIndex = Math.max(targetIndex - 1, 0);
+        targetIndex = Math.max(0, Math.min(targetIndex, partners.length - 1));
+
+        snapToIndex(targetIndex);
+        startAutoTimer();
+    };
 
     return (
         <section className="w-full py-20 relative overflow-hidden bg-transparent mt-4">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto px-[45px]">
                 {/* Section Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -77,61 +112,54 @@ export function OurPartner() {
                     </div>
                 </motion.div>
 
-                {/* Partner Cards Slider */}
-                <div className="relative -mx-4 px-4 sm:mx-0 sm:px-0">
-                    <div
-                        ref={scrollContainerRef}
-                        onScroll={handleScroll}
-                        className="flex gap-4 md:gap-6 overflow-x-auto snap-x snap-mandatory pb-4 pt-4 hide-scrollbar cursor-grab active:cursor-grabbing"
-                        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                {/* Carousel Track */}
+                <div ref={trackRef} className="overflow-hidden cursor-grab active:cursor-grabbing">
+                    <motion.div
+                        drag="x"
+                        dragConstraints={{ left: maxDrag, right: 0 }}
+                        dragElastic={0.08}
+                        dragTransition={{ bounceStiffness: 400, bounceDamping: 40 }}
+                        style={{ x }}
+                        animate={controls}
+                        onDragStart={onDragStart}
+                        onDragEnd={onDragEnd}
+                        className="flex gap-6 w-max py-4"
                     >
                         {partners.map((partner, idx) => (
-                            <motion.div
+                            <div
                                 key={partner.id}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{
-                                    duration: 0.5,
-                                    delay: idx * 0.1,
-                                }}
-                                className="flex items-center justify-center group relative transition-all duration-300 snap-center shrink-0 w-[280px] sm:w-[320px] md:w-[350px] h-[180px]"
+                                className="flex items-center justify-center shrink-0 overflow-hidden rounded-xl
+                                           w-[320px] sm:w-[380px] md:w-[420px] h-[220px]"
                             >
-                                {/* Partner Image */}
-                                <div className="relative w-[480px] h-[240px] group-hover:scale-105 transition-transform duration-300">
+                                <div className="relative w-full h-full pointer-events-none">
                                     <Image
                                         src={partner.image}
                                         alt={partner.name}
                                         fill
-                                        className="object-contain opacity-80 group-hover:opacity-100 mix-blend-multiply"
-                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                        className="object-contain opacity-80 mix-blend-multiply p-3"
+                                        sizes="420px"
+                                        draggable={false}
                                     />
                                 </div>
-                            </motion.div>
+                            </div>
                         ))}
-                    </div>
+                    </motion.div>
                 </div>
 
-                {/* Pagination Dots */}
-                <div className="flex justify-center items-center gap-2 mt-8">
-                    {partners.map((_, idx) => (
-                        <button
-                            key={idx}
-                            onClick={() => scrollToPartner(idx)}
-                            aria-label={`Lihat partner ${idx + 1}`}
-                            className={`w-3 h-3 rounded-full transition-all duration-300 ${activeIndex === idx
-                                ? 'bg-[#98141F] scale-110'
-                                : 'bg-[#183988] hover:bg-[#0c2460]'
-                                }`}
+                {/* Slider Indicator */}
+                <div className="flex justify-center mt-8">
+                    <div className="relative w-48 h-1.5 bg-[#183988]/20 rounded-full overflow-hidden">
+                        <motion.div
+                            className="absolute top-0 left-0 h-full bg-[#98141F] rounded-full"
+                            animate={{
+                                width: `${100 / partners.length}%`,
+                                x: `${activeIndex * 100}%`,
+                            }}
+                            transition={{ type: 'spring', stiffness: 300, damping: 35 }}
                         />
-                    ))}
+                    </div>
                 </div>
             </div>
-            <style jsx global>{`
-                .hide-scrollbar::-webkit-scrollbar {
-                    display: none;
-                }
-            `}</style>
         </section>
     );
 }

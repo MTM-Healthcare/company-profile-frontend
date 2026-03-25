@@ -34,7 +34,7 @@ const gridPosts = [
 
 export function MtmBlogspotGrid() {
     return (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="max-w-7xl mx-auto px-[45px]">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
                 {gridPosts.map((post, idx) => (
                     <motion.div key={idx} variants={fadeUp as any} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={idx * 0.1} className="flex flex-col group cursor-pointer">
@@ -54,3 +54,4 @@ export function MtmBlogspotGrid() {
         </section>
     );
 }
+

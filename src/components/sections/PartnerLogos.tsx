@@ -4,7 +4,7 @@ import Image from 'next/image';
 export function PartnerLogos() {
     return (
         <section className="w-full bg-white/60 backdrop-blur-sm border-y border-blue-50 py-8 relative z-20">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto px-[45px]">
                 <div className="flex flex-wrap justify-center items-center gap-10 md:gap-20">
                     <div className="relative h-12 w-36 md:h-16 md:w-48 opacity-80 hover:opacity-100 transition-opacity duration-300">
                         <Image src="/logo-mtm-logo.png" alt="Apotek MTM" fill className="object-contain" />
@@ -23,3 +23,4 @@ export function PartnerLogos() {
         </section>
     );
 }
+

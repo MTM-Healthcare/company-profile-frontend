@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 export function AboutHero() {
     return (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="max-w-7xl mx-auto px-[45px]">
             <div className="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
 
                 {/* Text Content */}
@@ -83,3 +83,4 @@ export function AboutHero() {
         </section>
     );
 }
+

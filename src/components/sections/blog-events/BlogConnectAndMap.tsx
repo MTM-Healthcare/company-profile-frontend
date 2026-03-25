@@ -22,7 +22,7 @@ const socials = [
 
 export function BlogConnectAndMap() {
     return (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-32 mb-10">
+        <section className="max-w-7xl mx-auto px-[45px] mt-32 mb-10">
             <SectionHeader
                 badgeText="Contact Us"
                 badgeIcon={<MapPin size={13} />}
@@ -75,3 +75,4 @@ export function BlogConnectAndMap() {
         </section>
     );
 }
+
