@@ -1,5 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Instagram, Linkedin, MessageCircle, Facebook, ChevronLeft, ChevronRight, MapPin } from 'lucide-react';
 import { fadeUp } from '@/utils/animations';
@@ -46,9 +47,10 @@ export function AboutContact() {
     }, [currentIndex]);
     return (
         <section
-            className="max-w-7xl mx-auto px-[45px] mt-32 py-14 rounded-3xl"
+            className="w-full mt-32 pt-20 pb-20"
             style={{ backgroundColor: '#CEDFFF' }}
         >
+            <div className="max-w-7xl mx-auto px-[45px]">
             {/* Title â€” right-aligned */}
             <motion.div
                 variants={fadeUp}
@@ -80,22 +82,22 @@ export function AboutContact() {
 
                     {/* Social Icons */}
                     {/* Contact Details Style matching User Image */}
-                    <div className="flex gap-2.5 mb-6">
-                        <a href="https://instagram.com/mtm.healthcare" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-[4px] bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 text-white flex items-center justify-center hover:opacity-90 transition shadow-sm">
-                            <Instagram size={16} />
+                    <div className="flex gap-4 mb-6">
+                        {/* Instagram */}
+                        <a href="https://instagram.com/mtm.healthcare" target="_blank" rel="noopener noreferrer" className="w-10 h-10 relative shrink-0 hover:scale-105 transition-transform">
+                            <Image src="/ig-icon.png" alt="Instagram" fill className="object-contain" />
                         </a>
-                        <a href="https://wa.me/62859106528909" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-[4px] bg-[#25D366] text-white flex items-center justify-center hover:opacity-90 transition shadow-sm">
-                            <MessageCircle size={16} /> {/* Using MessageCircle as placeholder for WA */}
+                        {/* WhatsApp */}
+                        <a href="https://wa.me/62859106528909" target="_blank" rel="noopener noreferrer" className="w-10 h-10 relative shrink-0 hover:scale-105 transition-transform">
+                            <Image src="/wa-icon.png" alt="WhatsApp" fill className="object-contain" />
                         </a>
-                        <a href="#" className="w-8 h-8 rounded-[4px] bg-[#0077B5] text-white flex items-center justify-center hover:opacity-90 transition shadow-sm">
-                            <Linkedin size={16} fill="currentColor" />
+                        {/* LinkedIn */}
+                        <a href="#" className="w-10 h-10 relative shrink-0 hover:scale-105 transition-transform">
+                            <Image src="/linkedin-icon.png" alt="LinkedIn" fill className="object-contain" />
                         </a>
-                        <a href="#" className="w-8 h-8 rounded-[4px] bg-black text-white flex items-center justify-center hover:opacity-90 transition shadow-sm">
-                            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
-                        </a>
-                        <a href="#" className="w-8 h-8 rounded-[4px] bg-[#1877F2] text-white flex items-center justify-center hover:opacity-90 transition shadow-sm">
-                            {/* Facebook SVG Logo */}
-                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" /></svg>
+                        {/* TikTok */}
+                        <a href="#" className="w-10 h-10 relative shrink-0 hover:scale-105 transition-transform">
+                            <Image src="/tiktok-icon.png" alt="TikTok" fill className="object-contain" />
                         </a>
                     </div>
 
@@ -108,12 +110,12 @@ export function AboutContact() {
                         <p>
                             Jam Buka: Setiap Hari (07.00 - 19.00)
                         </p>
-                        <p>
+                        <div>
                             E-Commerce:<br />
-                            <a href="https://www.tokopedia.com/amtm" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 transition-colors">
-                                https://www.tokopedia.com/amtm
+                            <a href="https://www.tokopedia.com/amtm" target="_blank" rel="noopener noreferrer" className="inline-block mt-2 hover:opacity-80 transition-opacity">
+                                <Image src="/tokped.svg" alt="Tokopedia" width={110} height={32} className="w-auto h-8 object-contain" />
                             </a>
-                        </p>
+                        </div>
                     </div>
 
                     {/* Address Display synced with map */}
@@ -212,6 +214,7 @@ export function AboutContact() {
                     </button>
 
                 </motion.div>
+            </div>
             </div>
         </section>
     );

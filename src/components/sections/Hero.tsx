@@ -25,7 +25,7 @@ export function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7 }}
-                className="w-full h-[460px] md:h-[560px] rounded-[2.5rem] overflow-hidden relative shadow-2xl shadow-blue-200/50"
+                className="w-full h-[460px] md:h-[560px] rounded-[0.5rem] overflow-hidden relative shadow-2xl shadow-blue-200/50"
             >
                 <AnimatePresence mode="popLayout">
                     <motion.div

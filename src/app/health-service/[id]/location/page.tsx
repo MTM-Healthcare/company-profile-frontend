@@ -41,7 +41,7 @@ export default function LocationSelectionPage() {
                     
                     {/* 1. Page Header */}
                     <div className="flex flex-col mb-8 w-full max-w-[800px] mx-auto">
-                        <Link href={`/health-service/${params.id}`} className="flex items-center gap-2 text-[#1a1a1a] hover:text-[#98141F] transition-colors mb-2 w-fit group">
+                        <Link href="/health-service" className="flex items-center gap-2 text-[#1a1a1a] hover:text-[#98141F] transition-colors mb-2 w-fit group">
                             <ChevronLeft size={24} strokeWidth={2.5} className="group-hover:-translate-x-1 transition-transform" />
                             <h1 className="font-heading font-extrabold text-[24px] md:text-[28px] leading-tight">
                                 Layanan Kesehatan MTM Healthcare

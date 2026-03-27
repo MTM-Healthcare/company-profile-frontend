@@ -15,25 +15,29 @@ import {
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 
-// Dummy Categories
-const sidebarCategories = [
-    { id: 0, name: 'Semua Layanan', count: 38, active: true },
-    { id: 1, name: 'Konsultasi', count: 2, active: false },
-    { id: 2, name: 'Tindakan Medis', count: 26, active: false },
-    { id: 3, name: 'Suntik Vaksin', count: 1, active: false },
-    { id: 4, name: 'Suntik Vitamin Booster', count: 2, active: false },
-    { id: 5, name: 'MCU', count: 1, active: false },
-    { id: 6, name: 'Cek Laboratorium', count: 7, active: false },
+// Base Categories
+const categoriesList = [
+    { id: 0, name: 'Semua Layanan' },
+    { id: 1, name: 'Konsultasi' },
+    { id: 2, name: 'Tindakan Medis' },
+    { id: 3, name: 'Suntik Vaksin' },
+    { id: 4, name: 'Suntik Vitamin Booster' },
+    { id: 5, name: 'MCU' },
+    { id: 6, name: 'Cek Laboratorium' },
 ];
 
-// Dummy Products (9 max for grid)
-const allServices = Array.from({ length: 9 }).map((_, i) => ({
-    id: i + 1,
-    title: 'Konsultasi Umum',
-    desc: 'Konsultasi kesehatan menyeluruh dengan dokter yang berpengalaman.',
-    price: 'Rp 75.000',
-    orders: '1.250+ pemesanan',
-}));
+// Dummy Products
+const allServices = [
+    { id: 1, title: 'Konsultasi Dokter Umum', category: 'Konsultasi', desc: 'Konsultasi kesehatan menyeluruh dengan dokter yang berpengalaman.', price: 'Rp 75.000', orders: '1.250+ pemesanan' },
+    { id: 2, title: 'Konsultasi Spesialis Paru', category: 'Konsultasi', desc: 'Konsultasi paru dan pernapasan.', price: 'Rp 150.000', orders: '300+ pemesanan' },
+    { id: 3, title: 'Terapi Nebulizer', category: 'Tindakan Medis', desc: 'Terapi uap nebulizer untuk gangguan pernapasan.', price: 'Rp 120.000', orders: '450+ pemesanan' },
+    { id: 4, title: 'Rawat Luka Ringan', category: 'Tindakan Medis', desc: 'Pembersihan dan perawatan luka ringan.', price: 'Rp 50.000', orders: '800+ pemesanan' },
+    { id: 5, title: 'Vaksin Influenza', category: 'Suntik Vaksin', desc: 'Vaksin influenza untuk mencegah flu musiman.', price: 'Rp 300.000', orders: '120+ pemesanan' },
+    { id: 6, title: 'Suntik Vitamin C 1000mg', category: 'Suntik Vitamin Booster', desc: 'Suntikan vitamin C untuk daya tahan tubuh.', price: 'Rp 100.000', orders: '600+ pemesanan' },
+    { id: 7, title: 'Paket MCU Basic', category: 'MCU', desc: 'Pemeriksaan kesehatan dasar untuk umum.', price: 'Rp 450.000', orders: '80+ pemesanan' },
+    { id: 8, title: 'Cek Gula Darah', category: 'Cek Laboratorium', desc: 'Pemeriksaan kadar gula darah puasa / sewaktu.', price: 'Rp 35.000', orders: '2.000+ pemesanan' },
+    { id: 9, title: 'Cek Kolesterol', category: 'Cek Laboratorium', desc: 'Pemeriksaan kadar kolesterol total.', price: 'Rp 45.000', orders: '1.500+ pemesanan' },
+];
 
 // Dummy FAQs
 const faqs = [
@@ -61,6 +65,21 @@ const faqs = [
 
 export default function AllHealthServicesPage() {
     const [openFaq, setOpenFaq] = React.useState<number | null>(0);
+    const [selectedCategory, setSelectedCategory] = React.useState<string>('Semua Layanan');
+    const [searchQuery, setSearchQuery] = React.useState<string>('');
+
+    const filteredServices = allServices.filter(svc => {
+        const matchesCategory = selectedCategory === 'Semua Layanan' || svc.category === selectedCategory;
+        const matchesSearch = svc.title.toLowerCase().includes(searchQuery.toLowerCase()) || svc.desc.toLowerCase().includes(searchQuery.toLowerCase());
+        return matchesCategory && matchesSearch;
+    });
+
+    const sidebarCategories = categoriesList.map(cat => {
+        const count = cat.name === 'Semua Layanan' 
+            ? allServices.length 
+            : allServices.filter(s => s.category === cat.name).length;
+        return { ...cat, count, active: selectedCategory === cat.name };
+    });
 
     const toggleFaq = (index: number) => {
         setOpenFaq(openFaq === index ? null : index);
@@ -70,7 +89,7 @@ export default function AllHealthServicesPage() {
         <div className="flex flex-col min-h-screen relative overflow-hidden">
             <Navbar />
 
-            <main className="flex-1 pb-20 max-w-7xl mx-auto px-[45px] w-full relative z-10 flex flex-col items-center overflow-hidden">
+            <main className="flex-1 pb-20 w-full relative z-10 flex flex-col items-center overflow-hidden">
                 {/* Ambient blobs from page.tsx */}
                 <div className="absolute inset-0 pointer-events-none -z-0">
                     <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-100/25 rounded-full blur-[130px] -translate-y-1/4 translate-x-1/4" />
@@ -79,7 +98,7 @@ export default function AllHealthServicesPage() {
                 {/* Subtle top/bottom fade bands */}
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-50/50 to-transparent pointer-events-none -z-0" />
                 
-                <div className="relative z-10 w-full pt-36 max-w-7xl mx-auto flex flex-col items-center">
+                <div className="relative z-10 w-full pt-36 max-w-7xl mx-auto flex flex-col items-center px-[45px]">
                 {/* 1. Page Header */}
                 <div className="flex flex-col mb-8 w-full max-w-5xl mx-auto">
                     <Link href="/health-service" className="flex items-center gap-2 text-[#1a1a1a] hover:text-[#98141F] transition-colors mb-2 w-fit group">
@@ -102,6 +121,8 @@ export default function AllHealthServicesPage() {
                         <input
                             type="text"
                             placeholder="Cari Layanan Kesehatan.."
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
                             className="flex-grow pr-6 py-2 outline-none text-[13px] text-[#1a1a1a] bg-transparent placeholder-gray-500 font-medium"
                         />
                     </div>
@@ -119,6 +140,7 @@ export default function AllHealthServicesPage() {
                             {sidebarCategories.map(cat => (
                                 <li key={cat.id}>
                                     <button 
+                                        onClick={() => setSelectedCategory(cat.name)}
                                         className={`w-full text-left px-4 py-2.5 rounded-lg text-[13px] font-semibold transition-colors flex justify-between items-center ${
                                             cat.active 
                                             ? 'bg-[#98141F] text-white' 
@@ -138,6 +160,7 @@ export default function AllHealthServicesPage() {
                         {sidebarCategories.map(cat => (
                             <button 
                                 key={cat.id}
+                                onClick={() => setSelectedCategory(cat.name)}
                                 className={`shrink-0 px-4 py-2 rounded-full text-[12px] font-semibold transition-colors border ${
                                     cat.active 
                                     ? 'bg-[#98141F] border-[#98141F] text-white' 
@@ -151,8 +174,9 @@ export default function AllHealthServicesPage() {
 
                     {/* Main Grid */}
                     <div className="flex-1 w-full">
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                            {allServices.map((svc) => (
+                        {filteredServices.length > 0 ? (
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                                {filteredServices.map((svc) => (
                                 <div key={svc.id} className="bg-white rounded-[16px] p-5 shadow-sm border border-gray-100 flex flex-col hover:shadow-md transition-shadow">
                                     <div className="w-10 h-10 rounded-xl bg-[#EEF2FF] flex items-center justify-center mb-4">
                                         <Stethoscope size={20} className="text-[#98141F]" strokeWidth={2.5} />
@@ -181,7 +205,14 @@ export default function AllHealthServicesPage() {
                                     </Link>
                                 </div>
                             ))}
-                        </div>
+                            </div>
+                        ) : (
+                            <div className="bg-white rounded-[16px] p-10 shadow-sm border border-gray-100 flex flex-col items-center justify-center text-center">
+                                <Search size={48} className="text-gray-300 mb-4" />
+                                <h3 className="font-heading font-bold text-xl text-[#1a1a1a] mb-2">Layanan tidak ditemukan</h3>
+                                <p className="text-sm text-gray-500">Coba ubah kata kunci pencarian atau kategori yang dipilih.</p>
+                            </div>
+                        )}
 
                         {/* Pagination */}
                         <div className="flex justify-center items-center gap-2 mt-12 mb-8">

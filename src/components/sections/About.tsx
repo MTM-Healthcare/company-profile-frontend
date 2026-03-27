@@ -6,20 +6,20 @@ import Image from 'next/image';
 export function About() {
     return (
         <>
-            <motion.section 
+            <motion.section
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="w-full py-14 mt-16"
+                className="w-full py-10 mt-12 md:py-16"
             >
-                <div className="max-w-7xl mx-auto px-[45px]">
-                    <div className="flex flex-col md:flex-row items-center justify-center gap-10 lg:gap-24">
+                <div className="max-w-7xl mx-auto px-[20px] md:px-[60px]">
+                    <div className="flex flex-col md:flex-row items-center justify-center w-full">
                         {/* Left Side: Logo & Stats */}
-                        <div className="flex flex-col gap-8 md:w-1/2 items-center md:items-start pl-0 lg:pl-10">
+                        <div className="flex flex-col gap-8 w-full md:w-1/2 items-center md:items-start md:pr-10 lg:pr-16">
                             {/* Logo */}
                             <div className="flex items-center gap-4">
-                                <div className="relative w-14 h-14 md:w-16 md:h-16 shrink-0">
+                                <div className="relative w-24 h-24 md:w-28 md:h-28 shrink-0">
                                     <Image
                                         src="/logo-mtm-logo.png"
                                         alt="MTM Healthcare Logo"
@@ -27,43 +27,43 @@ export function About() {
                                         className="object-contain"
                                     />
                                 </div>
-                                <h2 className="font-heading font-bold text-[1.5rem] md:text-[1.8rem] text-[#1a1a1a] tracking-tight">MTM Healthcare</h2>
+                                <h2 className="font-heading font-bold text-[2rem] md:text-[2.5rem] text-[#1a1a1a] tracking-tight">MTM Healthcare</h2>
                             </div>
-                            
+
                             {/* Stats */}
-                            <div className="flex gap-4 lg:gap-10 w-full justify-center md:justify-start pl-0 lg:pl-2">
-                                <div className="text-center w-[140px] md:w-[150px]">
-                                    <h3 className="font-heading font-black text-[3rem] md:text-[3.5rem] leading-none text-[#1A1A1A] mb-2 tracking-tighter">100+</h3>
-                                    <p className="text-[9px] md:text-[10px] text-[#1a1a1a] leading-[1.3] font-medium">
-                                        Tenaga Kesehatan Profesional<br/>dalam Ekosistem MTM Healthcare
+                            <div className="flex gap-8 md:gap-10 w-full justify-center">
+                                <div className="text-center flex flex-col items-center">
+                                    <h3 className="font-heading font-black text-[4rem] md:text-[5rem] leading-none text-[#1A1A1A] mb-2 tracking-tighter">100+</h3>
+                                    <p className="text-[12px] md:text-[14px] text-[#1a1a1a] leading-relaxed font-bold max-w-[180px]">
+                                        Tenaga Kesehatan Profesional dalam Ekosistem MTM Healthcare
                                     </p>
                                 </div>
-                                <div className="text-center w-[140px] md:w-[150px]">
-                                    <h3 className="font-heading font-black text-[3rem] md:text-[3.5rem] leading-none text-[#1A1A1A] mb-2 tracking-tighter">25+</h3>
-                                    <p className="text-[9px] md:text-[10px] text-[#1a1a1a] leading-[1.3] font-medium">
-                                        Program dan Inisiatif Layanan<br/>Kesehatan
+                                <div className="text-center flex flex-col items-center">
+                                    <h3 className="font-heading font-black text-[4rem] md:text-[5rem] leading-none text-[#1A1A1A] mb-2 tracking-tighter">25+</h3>
+                                    <p className="text-[12px] md:text-[14px] text-[#1a1a1a] leading-relaxed font-bold max-w-[180px]">
+                                        Program dan Inisiatif Layanan Kesehatan
                                     </p>
                                 </div>
                             </div>
                         </div>
 
                         {/* Divider */}
-                        <div className="hidden md:block w-[4px] h-[110px] bg-[#9e2a2b] rounded-full shrink-0 mt-4"></div>
-                        <div className="block md:hidden h-[4px] w-[110px] bg-[#9e2a2b] rounded-full shrink-0 my-4"></div>
+                        <div className="hidden md:block w-[5px] h-[280px] bg-[#9e2a2b] rounded-full shrink-0 mx-8 lg:mx-24"></div>
+                        <div className="block md:hidden h-[5px] w-[2800px] bg-[#9e2a2b] rounded-full shrink-0 my-12 mx-auto"></div>
 
                         {/* Right Side: Our Clinic */}
-                        <div className="flex flex-col gap-5 md:w-1/3 w-full max-w-sm pr-0 lg:pr-10">
-                            <h2 className="font-heading font-bold text-[1.5rem] md:text-[1.8rem] text-[#1a1a1a] text-center md:text-left">Our Clinic</h2>
-                            <ul className="space-y-3">
+                        <div className="flex flex-col gap-6 w-full md:w-1/2 items-center md:items-start md:pl-10 lg:pl-16">
+                            <h1 className="font-heading font-bold text-[2rem] md:text-[2.5rem] text-[#1a1a1a] text-center md:text-left w-full">Our Clinic</h1>
+                            <ul className="space-y-3 w-full flex flex-col items-center md:items-start">
                                 {[
                                     'MTM Medical Clinic',
                                     'Apotek HKM Tangerang',
                                     'Apotek MTM Bekasi',
                                     'Apotek MTM Bintaro'
                                 ].map((clinic, index) => (
-                                    <li key={index} className="flex items-center gap-3 justify-center md:justify-start">
+                                    <li key={index} className="flex items-center gap-3">
                                         <MapPin className="text-[#c13025] shrink-0" size={20} strokeWidth={2.5} />
-                                        <span className="text-sm md:text-[14px] font-semibold text-[#1a1a1a] tracking-wide">{clinic}</span>
+                                        <span className="text-sm md:text-[24px] text-[#1a1a1a] font-bold tracking-wide">{clinic}</span>
                                     </li>
                                 ))}
                             </ul>

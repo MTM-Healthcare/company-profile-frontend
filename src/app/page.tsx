@@ -12,6 +12,7 @@ import { Contact } from '@/components/sections/Contact';
 import { Newsletter } from '@/components/sections/Newsletter';
 import { LocationMap } from '@/components/sections/LocationMap';
 import { sliderEvents } from '@/data/slider';
+import { AboutContact } from '@/components/sections/about/AboutContact';
 
 export default function Home() {
     return (
@@ -19,7 +20,7 @@ export default function Home() {
             <Navbar />
 
             {/* Main content area */}
-            <main className="flex-1 pt-24 pb-12 relative z-10">
+            <main className="flex-1 pt-24 relative z-10">
 
                 {/* Hero — standalone */}
                 <Hero />
@@ -50,7 +51,7 @@ export default function Home() {
                 <FAQ />
 
                 {/* Pair 4 — Highlighted */}
-                <div className="w-full relative overflow-hidden mt-32 pb-4">
+                <div className="w-full relative overflow-hidden mt-32">
                     {/* Ambient blobs */}
                     <div className="absolute inset-0 pointer-events-none -z-0">
                         <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-blue-100/25 rounded-full blur-[130px] -translate-y-1/4 -translate-x-1/4" />
@@ -59,7 +60,7 @@ export default function Home() {
                     {/* Subtle top/bottom fade bands */}
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-50/50 to-transparent pointer-events-none -z-0" />
                     <div className="relative z-10 -mt-32">
-                        <Contact />
+                        <AboutContact />
                     </div>
                 </div>
 

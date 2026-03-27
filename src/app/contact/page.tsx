@@ -9,6 +9,7 @@ import { ContactHero } from '@/components/sections/contact/ContactHero';
 import { ContactFaq } from '@/components/sections/contact/ContactFaq';
 import { Contact } from '@/components/sections/Contact';
 import { ContactEventSlider } from '@/components/sections/contact/ContactEventSlider';
+import { AboutContact } from '@/components/sections/about/AboutContact';
 
 /* ─── Component ────────────────────────────────────────────────────── */
 export default function ContactPage() {
@@ -20,7 +21,7 @@ export default function ContactPage() {
                 <ContactHero />
                 <ContactEventSlider images={sliderImages} />
                 <ContactFaq />
-                <Contact />
+                <AboutContact />
             </main>
 
             <Footer />
