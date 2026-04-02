@@ -2,13 +2,22 @@ import type { Metadata } from 'next';
 import { Host_Grotesk } from 'next/font/google';
 import './globals.css';
 import { constructMetadata } from '@/lib/seo';
+import { getSiteConfig } from '@/content/site';
 
 const hostGrotesk = Host_Grotesk({
     subsets: ['latin'],
     variable: '--font-host-grotesk',
 });
 
-export const metadata: Metadata = constructMetadata();
+export async function generateMetadata(): Promise<Metadata> {
+    const config = await getSiteConfig().catch(() => null);
+    return constructMetadata({
+        title: config?.name,
+        description: config?.description,
+        image: config?.ogImage,
+        baseUrl: config?.url,
+    });
+}
 
 export default function RootLayout({
     children,
@@ -23,4 +32,3 @@ export default function RootLayout({
         </html>
     );
 }
-

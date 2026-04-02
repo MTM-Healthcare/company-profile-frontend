@@ -50,7 +50,7 @@ export function ConnectAndMap() {
             className="max-w-7xl mx-auto px-[45px] mt-32 py-14 rounded-3xl"
             style={{ backgroundColor: '#CEDFFF' }}
         >
-            {/* Title â€” right-aligned */}
+            {/* Title â€" right-aligned */}
             <motion.div
                 variants={fadeUp}
                 initial="hidden"
@@ -69,7 +69,7 @@ export function ConnectAndMap() {
             {/* Two columns */}
             <div className="flex flex-col md:flex-row gap-8 items-start">
 
-                {/* Left â€” Contact Info */}
+                {/* Left â€" Contact Info */}
                 <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -161,7 +161,7 @@ export function ConnectAndMap() {
                     </div>
                 </motion.div>
 
-                {/* Right â€” Google Map Carousel */}
+                {/* Right â€" Google Map Carousel */}
                 <motion.div
                     initial={{ opacity: 0, x: 20 }}
                     whileInView={{ opacity: 1, x: 0 }}

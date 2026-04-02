@@ -2,8 +2,26 @@
 import { motion } from 'framer-motion';
 import { MapPin } from 'lucide-react';
 import Image from 'next/image';
+import type { AboutStat } from '@/types/cms';
 
-export function About() {
+const FALLBACK_STATS: AboutStat[] = [
+    { id: 1, value: '100+', label: 'Tenaga Kesehatan Profesional dalam Ekosistem MTM Healthcare', order: 0 },
+    { id: 2, value: '25+', label: 'Program dan Inisiatif Layanan Kesehatan', order: 1 },
+];
+
+const FALLBACK_CLINICS = [
+    'MTM Medical Clinic',
+    'Apotek HKM Tangerang',
+    'Apotek MTM Bekasi',
+    'Apotek MTM Bintaro',
+];
+
+interface AboutProps {
+    stats?: AboutStat[];
+    clinics?: string[];
+}
+
+export function About({ stats = FALLBACK_STATS, clinics = FALLBACK_CLINICS }: AboutProps) {
     return (
         <>
             <motion.section
@@ -32,18 +50,14 @@ export function About() {
 
                             {/* Stats */}
                             <div className="flex gap-8 md:gap-10 w-full justify-center">
-                                <div className="text-center flex flex-col items-center">
-                                    <h3 className="font-heading font-black text-[4rem] md:text-[5rem] leading-none text-[#1A1A1A] mb-2 tracking-tighter">100+</h3>
-                                    <p className="text-[12px] md:text-[14px] text-[#1a1a1a] leading-relaxed font-bold max-w-[180px]">
-                                        Tenaga Kesehatan Profesional dalam Ekosistem MTM Healthcare
-                                    </p>
-                                </div>
-                                <div className="text-center flex flex-col items-center">
-                                    <h3 className="font-heading font-black text-[4rem] md:text-[5rem] leading-none text-[#1A1A1A] mb-2 tracking-tighter">25+</h3>
-                                    <p className="text-[12px] md:text-[14px] text-[#1a1a1a] leading-relaxed font-bold max-w-[180px]">
-                                        Program dan Inisiatif Layanan Kesehatan
-                                    </p>
-                                </div>
+                                {stats.map((stat) => (
+                                    <div key={stat.id} className="text-center flex flex-col items-center">
+                                        <h3 className="font-heading font-black text-[4rem] md:text-[5rem] leading-none text-[#1A1A1A] mb-2 tracking-tighter">{stat.value}</h3>
+                                        <p className="text-[12px] md:text-[14px] text-[#1a1a1a] leading-relaxed font-bold max-w-[180px]">
+                                            {stat.label}
+                                        </p>
+                                    </div>
+                                ))}
                             </div>
                         </div>
 
@@ -55,12 +69,7 @@ export function About() {
                         <div className="flex flex-col gap-6 w-full md:w-1/2 items-center md:items-start md:pl-10 lg:pl-16">
                             <h1 className="font-heading font-bold text-[2rem] md:text-[2.5rem] text-[#1a1a1a] text-center md:text-left w-full">Our Clinic</h1>
                             <ul className="space-y-3 w-full flex flex-col items-center md:items-start">
-                                {[
-                                    'MTM Medical Clinic',
-                                    'Apotek HKM Tangerang',
-                                    'Apotek MTM Bekasi',
-                                    'Apotek MTM Bintaro'
-                                ].map((clinic, index) => (
+                                {clinics.map((clinic, index) => (
                                     <li key={index} className="flex items-center gap-3">
                                         <MapPin className="text-[#c13025] shrink-0" size={20} strokeWidth={2.5} />
                                         <span className="text-sm md:text-[24px] text-[#1a1a1a] font-bold tracking-wide">{clinic}</span>
@@ -96,4 +105,3 @@ export function About() {
         </>
     );
 }
-

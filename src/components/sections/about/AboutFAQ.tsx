@@ -1,19 +1,27 @@
 'use client';
 import * as React from 'react';
 import { motion } from 'framer-motion';
-import { ImageIcon } from 'lucide-react';
 import Image from 'next/image';
 
 import { companyFaqData } from '@/data/faq';
 import { fadeUp } from '@/utils/animations';
 
-export function AboutFAQ() {
+interface FAQItem {
+    question: string;
+    answer: string;
+}
+
+interface AboutFAQProps {
+    items?: FAQItem[];
+}
+
+export function AboutFAQ({ items = companyFaqData }: AboutFAQProps) {
     const [openIndex, setOpenIndex] = React.useState<number | null>(0); // 0 corresponds to the first item
 
     return (
         <section className="max-w-7xl mx-auto px-[45px] mt-32">
 
-            {/* Header â€” right-aligned */}
+            {/* Header â€" right-aligned */}
             <motion.div
                 variants={fadeUp}
                 initial="hidden"
@@ -29,13 +37,13 @@ export function AboutFAQ() {
                 </p>
             </motion.div>
 
-            {/* Two columns â€” questions & image at the same level */}
+            {/* Two columns â€" questions & image at the same level */}
             <div className="flex flex-col md:flex-row gap-10 lg:gap-16 items-start">
 
-                {/* Left â€” FAQ Questions */}
+                {/* Left â€" FAQ Questions */}
                 <div className="md:w-1/2 w-full order-2 md:order-1 mt-6 md:mt-0">
                     <div className="flex flex-col">
-                        {companyFaqData.map((faq, idx) => {
+                        {items.map((faq, idx) => {
                             const isOpen = openIndex === idx;
 
                             return (
@@ -79,7 +87,7 @@ export function AboutFAQ() {
                     </div>
                 </div>
 
-                {/* Right â€” Image */}
+                {/* Right â€" Image */}
                 <div className="md:w-1/2 w-full order-1 md:order-2">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.96 }}

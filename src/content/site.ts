@@ -1,3 +1,7 @@
+import { fetchCMS } from '@/lib/cms';
+import type { SiteConfig } from '@/types/cms';
+
+// Static fallback — used for synchronous contexts
 export const siteConfig = {
     name: 'MTM Healthcare',
     description: 'Your trusted local pharmacy for all your health and medical needs.',
@@ -16,3 +20,7 @@ export const siteConfig = {
     },
 };
 
+// Async — fetches live data from CMS
+export async function getSiteConfig(): Promise<SiteConfig> {
+    return fetchCMS<SiteConfig>('/api/public/site-config', 86400);
+}

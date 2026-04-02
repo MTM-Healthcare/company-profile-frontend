@@ -1,3 +1,6 @@
+import { fetchCMS } from '@/lib/cms';
+import type { FAQ as CmsFAQ } from '@/types/cms';
+
 export const contactFaqData = [
     {
         question: "How long is the wait time to get my prescription?",
@@ -17,6 +20,7 @@ export const contactFaqData = [
     },
 ];
 
+// Static fallback
 export const companyFaqData = [
     {
         question: "Question #1",
@@ -32,3 +36,8 @@ export const companyFaqData = [
     }
 ];
 
+export async function getCompanyFAQ(): Promise<{ question: string; answer: string }[]> {
+    const faqs = await fetchCMS<CmsFAQ[]>('/api/public/faq', 86400);
+    if (!faqs.length) return companyFaqData;
+    return faqs;
+}

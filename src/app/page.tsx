@@ -11,10 +11,34 @@ import { FAQ } from '@/components/sections/FAQ';
 import { Contact } from '@/components/sections/Contact';
 import { Newsletter } from '@/components/sections/Newsletter';
 import { LocationMap } from '@/components/sections/LocationMap';
-import { sliderEvents } from '@/data/slider';
 import { AboutContact } from '@/components/sections/about/AboutContact';
+import { fetchCMS } from '@/lib/cms';
+import { sliderEvents } from '@/data/slider';
+import type { Achievement, FAQ as CmsFAQ, AboutData, EventSlide, HeroSlide } from '@/types/cms';
 
-export default function Home() {
+export const revalidate = 3600;
+
+export default async function Home() {
+    const [heroSlidesResult, achievementsResult, faqsResult, aboutResult, eventSlidesResult] = await Promise.allSettled([
+        fetchCMS<HeroSlide[]>('/api/public/hero-slides'),
+        fetchCMS<Achievement[]>('/api/public/achievements'),
+        fetchCMS<CmsFAQ[]>('/api/public/faq', 86400),
+        fetchCMS<AboutData>('/api/public/about', 3600),
+        fetchCMS<EventSlide[]>('/api/public/event-slides'),
+    ]);
+
+    const heroSlides = heroSlidesResult.status === 'fulfilled'
+        ? heroSlidesResult.value.map((s) => ({ imageUrl: s.imageUrl, alt: s.alt }))
+        : undefined;
+
+    const achievements = achievementsResult.status === 'fulfilled' ? achievementsResult.value : [];
+    const faqs = faqsResult.status === 'fulfilled' ? faqsResult.value : [];
+    const aboutStats = aboutResult.status === 'fulfilled' ? aboutResult.value.stats : [];
+    const aboutPartners = aboutResult.status === 'fulfilled' ? aboutResult.value.partners : [];
+    const slides = eventSlidesResult.status === 'fulfilled' && eventSlidesResult.value.length
+        ? eventSlidesResult.value.map((s) => ({ image: s.imageUrl }))
+        : sliderEvents;
+
     return (
         <div className="flex flex-col min-h-screen relative overflow-hidden">
             <Navbar />
@@ -23,10 +47,13 @@ export default function Home() {
             <main className="flex-1 pt-24 relative z-10">
 
                 {/* Hero — standalone */}
-                <Hero />
+                <Hero slides={heroSlides} />
 
                 {/* Pair 1 — Normal (white) */}
-                <About />
+                <About
+                    stats={aboutStats.length ? aboutStats : undefined}
+                    clinics={aboutPartners.length ? aboutPartners.map((p) => p.name) : undefined}
+                />
                 <OurPartner />
 
                 {/* Pair 2 — Highlighted */}
@@ -39,16 +66,16 @@ export default function Home() {
                     {/* Subtle top/bottom fade bands */}
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-50/50 to-transparent pointer-events-none -z-0" />
                     <div className="relative z-10">
-                        <Achievements />
+                        <Achievements items={achievements.length ? achievements : undefined} />
                         <div className="mt-20">
                             <BookingCTA />
                         </div>
-                        <EventsSlider slides={sliderEvents} />
+                        <EventsSlider slides={slides} />
                     </div>
                 </div>
 
                 {/* Pair 3 — Normal (white) */}
-                <FAQ />
+                <FAQ items={faqs.length ? faqs : undefined} />
 
                 {/* Pair 4 — Highlighted */}
                 <div className="w-full relative overflow-hidden mt-32">
@@ -70,4 +97,3 @@ export default function Home() {
         </div>
     );
 }
-

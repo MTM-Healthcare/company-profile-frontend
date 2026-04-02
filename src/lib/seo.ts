@@ -1,18 +1,26 @@
 import { Metadata } from 'next';
-import { siteConfig } from '@/content/site';
+
+const FALLBACK = {
+    name: 'MTM Healthcare',
+    description: 'Your trusted local pharmacy for all your health and medical needs.',
+    ogImage: 'https://apotek.com/og.jpg',
+    url: 'https://apotek.com',
+};
 
 export function constructMetadata({
-    title = siteConfig.name,
-    description = siteConfig.description,
-    image = siteConfig.ogImage,
+    title = FALLBACK.name,
+    description = FALLBACK.description,
+    image = FALLBACK.ogImage,
     icons = '/logo-mtm-logo.png',
     noIndex = false,
+    baseUrl = FALLBACK.url,
 }: {
     title?: string;
     description?: string;
     image?: string;
     icons?: string;
     noIndex?: boolean;
+    baseUrl?: string;
 } = {}): Metadata {
     return {
         title: {
@@ -23,11 +31,7 @@ export function constructMetadata({
         openGraph: {
             title,
             description,
-            images: [
-                {
-                    url: image,
-                },
-            ],
+            images: [{ url: image }],
         },
         twitter: {
             card: 'summary_large_image',
@@ -37,7 +41,7 @@ export function constructMetadata({
             creator: '@apotek',
         },
         icons,
-        metadataBase: new URL(siteConfig.url),
+        metadataBase: new URL(baseUrl),
         ...(noIndex && {
             robots: {
                 index: false,
@@ -46,4 +50,3 @@ export function constructMetadata({
         }),
     };
 }
-

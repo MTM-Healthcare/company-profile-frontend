@@ -1,7 +1,33 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { fetchCMS } from '@/lib/cms';
+import type { SocialLink } from '@/types/cms';
 
-export function Footer() {
+const ICON_FILE_MAP: Record<string, string> = {
+    instagram: '/ig-icon.png',
+    whatsapp: '/wa-icon.png',
+    linkedin: '/linkedin-icon.png',
+    tiktok: '/tiktok-icon.png',
+};
+
+const ALT_MAP: Record<string, string> = {
+    instagram: 'Instagram',
+    whatsapp: 'WhatsApp',
+    linkedin: 'LinkedIn',
+    tiktok: 'TikTok',
+};
+
+const FALLBACK_LINKS: SocialLink[] = [
+    { id: 1, platform: 'instagram', href: 'https://www.instagram.com/mtm.healthcare/', order: 0 },
+    { id: 2, platform: 'whatsapp', href: '#', order: 1 },
+    { id: 3, platform: 'linkedin', href: '#', order: 2 },
+    { id: 4, platform: 'tiktok', href: '#', order: 3 },
+];
+
+export async function Footer() {
+    const socialLinks = await fetchCMS<SocialLink[]>('/api/public/social-links', 86400).catch(() => FALLBACK_LINKS);
+    const displayLinks = socialLinks.length ? socialLinks : FALLBACK_LINKS;
+
     return (
         <footer className="relative overflow-hidden pt-10 md:pt-16 pb-6 md:pb-8" style={{ backgroundColor: '#CEDFFF' }}>
             {/* Background Image */}
@@ -29,18 +55,15 @@ export function Footer() {
                     </Link>
                     <p className="text-[14px] text-[#1a1a1a] font-bold mb-4">#TemanSehatKamu</p>
                     <div className="flex gap-3 mb-2">
-                        <a href="https://www.instagram.com/mtm.healthcare/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 relative shrink-0 hover:scale-105 transition-transform">
-                            <Image src="/ig-icon.png" alt="Instagram" fill className="object-contain" />
-                        </a>
-                        <a href="#" className="w-10 h-10 relative shrink-0 hover:scale-105 transition-transform">
-                            <Image src="/wa-icon.png" alt="WhatsApp" fill className="object-contain" />
-                        </a>
-                        <a href="#" className="w-10 h-10 relative shrink-0 hover:scale-105 transition-transform">
-                            <Image src="/linkedin-icon.png" alt="LinkedIn" fill className="object-contain" />
-                        </a>
-                        <a href="#" className="w-10 h-10 relative shrink-0 hover:scale-105 transition-transform">
-                            <Image src="/tiktok-icon.png" alt="TikTok" fill className="object-contain" />
-                        </a>
+                        {displayLinks.map((link) => {
+                            const iconFile = ICON_FILE_MAP[link.platform.toLowerCase()];
+                            if (!iconFile) return null;
+                            return (
+                                <a key={link.id} href={link.href} target="_blank" rel="noopener noreferrer" className="w-10 h-10 relative shrink-0 hover:scale-105 transition-transform">
+                                    <Image src={iconFile} alt={ALT_MAP[link.platform.toLowerCase()] ?? link.platform} fill className="object-contain" />
+                                </a>
+                            );
+                        })}
                     </div>
                 </div>
 
@@ -84,7 +107,7 @@ export function Footer() {
                             <div className="w-5 h-5 relative shrink-0">
                                 <Image src="/tiktok-icon.png" alt="TikTok" fill className="object-contain" />
                             </div>
-                            <a href="https://www.instagram.com/mtm.healthcare/" target="_blank" rel="noopener noreferrer" className="group hover:opacity-80 transition-opacity ml-1">
+                            <a href={displayLinks.find(l => l.platform === 'instagram')?.href ?? 'https://www.instagram.com/mtm.healthcare/'} target="_blank" rel="noopener noreferrer" className="group hover:opacity-80 transition-opacity ml-1">
                                 <span className="text-[13px] font-bold text-[#1a1a1a] underline underline-offset-4 decoration-2 group-hover:text-[#8E151F] group-hover:decoration-[#8E151F] transition-colors">
                                     @mtm.healthcare
                                 </span>
@@ -114,18 +137,15 @@ export function Footer() {
                             </Link>
                             <p className="text-[15px] text-[#1a1a1a] font-bold mb-6">#TemanSehatKamu</p>
                             <div className="flex gap-4 mb-6">
-                                <a href="https://www.instagram.com/mtm.healthcare/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 md:w-14 md:h-14 relative shrink-0 hover:scale-105 transition-transform">
-                                    <Image src="/ig-icon.png" alt="Instagram" fill className="object-contain" />
-                                </a>
-                                <a href="#" className="w-12 h-12 md:w-14 md:h-14 relative shrink-0 hover:scale-105 transition-transform">
-                                    <Image src="/wa-icon.png" alt="WhatsApp" fill className="object-contain" />
-                                </a>
-                                <a href="#" className="w-12 h-12 md:w-14 md:h-14 relative shrink-0 hover:scale-105 transition-transform">
-                                    <Image src="/linkedin-icon.png" alt="LinkedIn" fill className="object-contain" />
-                                </a>
-                                <a href="#" className="w-12 h-12 md:w-14 md:h-14 relative shrink-0 hover:scale-105 transition-transform">
-                                    <Image src="/tiktok-icon.png" alt="TikTok" fill className="object-contain" />
-                                </a>
+                                {displayLinks.map((link) => {
+                                    const iconFile = ICON_FILE_MAP[link.platform.toLowerCase()];
+                                    if (!iconFile) return null;
+                                    return (
+                                        <a key={link.id} href={link.href} target="_blank" rel="noopener noreferrer" className="w-12 h-12 md:w-14 md:h-14 relative shrink-0 hover:scale-105 transition-transform">
+                                            <Image src={iconFile} alt={ALT_MAP[link.platform.toLowerCase()] ?? link.platform} fill className="object-contain" />
+                                        </a>
+                                    );
+                                })}
                             </div>
                         </div>
                         <div className="mt-8">
@@ -170,7 +190,7 @@ export function Footer() {
                                 <div className="w-6 h-6 relative shrink-0">
                                     <Image src="/tiktok-icon.png" alt="TikTok" fill className="object-contain" />
                                 </div>
-                                <a href="https://www.instagram.com/mtm.healthcare/" target="_blank" rel="noopener noreferrer" className="group hover:opacity-80 transition-opacity ml-1">
+                                <a href={displayLinks.find(l => l.platform === 'instagram')?.href ?? 'https://www.instagram.com/mtm.healthcare/'} target="_blank" rel="noopener noreferrer" className="group hover:opacity-80 transition-opacity ml-1">
                                     <span className="text-[14px] md:text-[16px] font-bold text-[#1a1a1a] underline underline-offset-4 decoration-2 group-hover:text-[#8E151F] group-hover:decoration-[#8E151F] transition-colors">
                                         @mtm.healthcare
                                     </span>
@@ -187,5 +207,3 @@ export function Footer() {
         </footer>
     );
 }
-
-

@@ -2,14 +2,23 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, CalendarCheck } from 'lucide-react';
 
-const images = [
-    '/hero-home.png',
-    '/hero-home2.png'
+interface HeroSlide {
+    imageUrl: string;
+    alt?: string;
+}
+
+interface HeroProps {
+    slides?: HeroSlide[];
+}
+
+const FALLBACK_SLIDES: HeroSlide[] = [
+    { imageUrl: '/hero-home.png', alt: 'MTM Healthcare 1' },
+    { imageUrl: '/hero-home2.png', alt: 'MTM Healthcare 2' },
 ];
 
-export function Hero() {
+export function Hero({ slides }: HeroProps) {
+    const images = slides?.length ? slides : FALLBACK_SLIDES;
     const [currentIndex, setCurrentIndex] = useState(0);
 
     useEffect(() => {
@@ -17,7 +26,7 @@ export function Hero() {
             setCurrentIndex((prev) => (prev + 1) % images.length);
         }, 5000);
         return () => clearInterval(timer);
-    }, []);
+    }, [images.length]);
 
     return (
         <section className="max-w-7xl mx-auto px-[45px] mt-8">
@@ -37,8 +46,8 @@ export function Hero() {
                         className="absolute inset-0"
                     >
                         <Image
-                            src={images[currentIndex]}
-                            alt={`MTM Healthcare Hospital ${currentIndex + 1}`}
+                            src={images[currentIndex].imageUrl}
+                            alt={images[currentIndex].alt ?? `MTM Healthcare ${currentIndex + 1}`}
                             fill
                             priority
                             className="object-cover"
@@ -75,4 +84,3 @@ export function Hero() {
         </section>
     );
 }
-

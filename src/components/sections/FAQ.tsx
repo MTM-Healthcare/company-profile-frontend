@@ -1,14 +1,22 @@
 'use client';
 import * as React from 'react';
 import { motion } from 'framer-motion';
-import { ImageIcon } from 'lucide-react';
 import Image from 'next/image';
 
 import { companyFaqData } from '@/data/faq';
 import { fadeUp } from '@/utils/animations';
 
-export function FAQ() {
-    const [openIndex, setOpenIndex] = React.useState<number | null>(0); // 0 corresponds to the first item
+interface FAQItem {
+    question: string;
+    answer: string;
+}
+
+interface FAQProps {
+    items?: FAQItem[];
+}
+
+export function FAQ({ items = companyFaqData }: FAQProps) {
+    const [openIndex, setOpenIndex] = React.useState<number | null>(0);
 
     return (
         <section className="max-w-7xl mx-auto px-[45px] mt-32">
@@ -35,7 +43,7 @@ export function FAQ() {
                 {/* Left — FAQ Questions */}
                 <div className="md:w-1/2 w-full order-2 md:order-1 mt-6 md:mt-0">
                     <div className="flex flex-col">
-                        {companyFaqData.map((faq, idx) => {
+                        {items.map((faq, idx) => {
                             const isOpen = openIndex === idx;
 
                             return (
@@ -102,4 +110,3 @@ export function FAQ() {
         </section>
     );
 }
-

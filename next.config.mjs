@@ -13,7 +13,11 @@ const nextConfig = {
             {
                 protocol: 'https',
                 hostname: 'flagcdn.com',
-            }
+            },
+            {
+                protocol: 'http',
+                hostname: 'localhost',
+            },
         ],
     },
 };

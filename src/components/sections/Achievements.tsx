@@ -1,27 +1,23 @@
 'use client';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { Award, Shield, Clock, HeartPulse } from 'lucide-react';
+import type { Achievement } from '@/types/cms';
 
-const achievementsData = [
-    {
-        icon: Award,
-        text: "Kualitas Pelayanan Kesehatan Masyarakat yang Tinggi dan Profesional"
-    },
-    {
-        icon: Shield,
-        text: "Fasilitas dan Layanan kesehatan yang modern dan kenyamanan pasien"
-    },
-    {
-        icon: Clock,
-        text: "Kolaborasi dengan tenaga kesehatan profesional, sebagai standar layanan medis MTM"
-    },
-    {
-        icon: HeartPulse,
-        text: "Komitmen kami dalam menghadirkan pelayanan kesehatan yang aman dan terpercaya"
-    }
+const FALLBACK_ICONS = [Award, Shield, Clock, HeartPulse];
+
+const FALLBACK_ITEMS: Achievement[] = [
+    { id: 1, imageUrl: '', text: 'Kualitas Pelayanan Kesehatan Masyarakat yang Tinggi dan Profesional', order: 0 },
+    { id: 2, imageUrl: '', text: 'Fasilitas dan Layanan kesehatan yang modern dan kenyamanan pasien', order: 1 },
+    { id: 3, imageUrl: '', text: 'Kolaborasi dengan tenaga kesehatan profesional, sebagai standar layanan medis MTM', order: 2 },
+    { id: 4, imageUrl: '', text: 'Komitmen kami dalam menghadirkan pelayanan kesehatan yang aman dan terpercaya', order: 3 },
 ];
 
-export function Achievements() {
+interface AchievementsProps {
+    items?: Achievement[];
+}
+
+export function Achievements({ items = FALLBACK_ITEMS }: AchievementsProps) {
     return (
         <section className="max-w-7xl mx-auto px-[45px] text-center">
             {/* Header Content */}
@@ -42,19 +38,28 @@ export function Achievements() {
 
             {/* Cards Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-2 md:px-0">
-                {achievementsData.map((item, idx) => {
-                    const Icon = item.icon;
+                {items.map((item, idx) => {
+                    const FallbackIcon = FALLBACK_ICONS[idx % FALLBACK_ICONS.length];
                     return (
                         <motion.div
-                            key={idx}
+                            key={item.id}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: idx * 0.1 }}
                             className="bg-white rounded-xl p-8 shadow-[0_8px_30px_rgb(0,0,0,0.06)] flex flex-col items-center justify-center text-center min-h-[260px]"
                         >
-                            <div className="w-14 h-14 rounded-full bg-[#f1f5f9] flex items-center justify-center mb-6 shrink-0">
-                                <Icon className="text-[#9e2a2b]" size={24} strokeWidth={2} />
+                            <div className="w-14 h-14 rounded-full bg-[#f1f5f9] flex items-center justify-center mb-6 shrink-0 relative overflow-hidden">
+                                {item.imageUrl ? (
+                                    <Image
+                                        src={item.imageUrl}
+                                        alt={item.text}
+                                        fill
+                                        className="object-cover"
+                                    />
+                                ) : (
+                                    <FallbackIcon className="text-[#9e2a2b]" size={24} strokeWidth={2} />
+                                )}
                             </div>
                             <p className="text-[13px] text-gray-500 font-medium leading-[1.6]">
                                 {item.text}
@@ -66,4 +71,3 @@ export function Achievements() {
         </section>
     );
 }
-

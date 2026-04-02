@@ -2,26 +2,64 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Layers, ArrowRight } from 'lucide-react';
+import type { Project } from '@/types/cms';
 
-const sideProjects = [
+const FALLBACK_PROJECTS: Project[] = [
     {
-        id: '01',
+        id: 1,
+        imageUrl: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=800',
+        title: 'Integrated ICU Facility',
+        description: 'Construction of an intensive care ward with remote monitoring technology. This project aims to improve medical response to critical patients and minimize unnecessary physical contact in isolation areas.',
+        linkText: 'Project No 04',
+        isFeatured: true,
+        order: 0,
+        createdAt: '',
+        updatedAt: '',
+    },
+    {
+        id: 2,
+        imageUrl: 'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&q=80&w=200',
+        title: null,
         description: 'Update of the integrated electronic medical record system between branches for administrative efficiency.',
-        image: 'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&q=80&w=200'
+        linkText: 'Project No 01',
+        isFeatured: false,
+        order: 1,
+        createdAt: '',
+        updatedAt: '',
     },
     {
-        id: '02',
+        id: 3,
+        imageUrl: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=200',
+        title: null,
         description: 'Procurement of the latest high-resolution MRI equipment for early detection of neurological diseases.',
-        image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=200'
+        linkText: 'Project No 02',
+        isFeatured: false,
+        order: 2,
+        createdAt: '',
+        updatedAt: '',
     },
     {
-        id: '03',
+        id: 4,
+        imageUrl: 'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&q=80&w=200',
+        title: null,
         description: 'Construction of a healing garden facility for pediatric and elderly patients.',
-        image: 'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&q=80&w=200'
-    }
+        linkText: 'Project No 03',
+        isFeatured: false,
+        order: 3,
+        createdAt: '',
+        updatedAt: '',
+    },
 ];
 
-export function Projects() {
+interface ProjectsProps {
+    projects?: Project[];
+}
+
+export function Projects({ projects = FALLBACK_PROJECTS }: ProjectsProps) {
+    const [mainProject, ...sideProjects] = projects;
+
+    if (!mainProject) return null;
+
     return (
         <section className="max-w-7xl mx-auto px-[45px] mt-32">
             <div className="flex justify-between items-end pb-6 mb-8">
@@ -53,27 +91,31 @@ export function Projects() {
                 >
                     <div className="relative w-full h-[300px] md:h-[420px] rounded-[2rem] overflow-hidden shadow-xl shadow-blue-100 mb-5">
                         <Image
-                            src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=800"
-                            alt="Facility Construction"
+                            src={mainProject.imageUrl}
+                            alt={mainProject.title ?? 'Featured Project'}
                             fill
                             className="object-cover group-hover:scale-105 transition-transform duration-500"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                         <div className="absolute bottom-6 left-6">
-                            <span className="inline-block bg-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full mb-2">Project No 04</span>
-                            <h3 className="font-heading font-bold text-xl text-white drop-shadow">Integrated ICU Facility</h3>
+                            {mainProject.linkText && (
+                                <span className="inline-block bg-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full mb-2">{mainProject.linkText}</span>
+                            )}
+                            {mainProject.title && (
+                                <h3 className="font-heading font-bold text-xl text-white drop-shadow">{mainProject.title}</h3>
+                            )}
                         </div>
                     </div>
                     <p className="text-sm text-gray-500 leading-relaxed max-w-3xl">
-                        Construction of an intensive care ward with remote monitoring technology. This project aims to improve medical response to critical patients and minimize unnecessary physical contact in isolation areas.
+                        {mainProject.description}
                     </p>
                 </motion.div>
 
                 {/* Project List (Right) */}
                 <div className="lg:col-span-4 flex flex-col gap-4">
-                    {sideProjects.map((project, idx) => (
+                    {sideProjects.slice(0, 3).map((project, idx) => (
                         <motion.div
-                            key={idx}
+                            key={project.id}
                             initial={{ opacity: 0, x: 20 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
@@ -82,8 +124,8 @@ export function Projects() {
                         >
                             <div className="relative w-20 h-20 rounded-xl overflow-hidden shrink-0">
                                 <Image
-                                    src={project.image}
-                                    alt={`Project ${project.id}`}
+                                    src={project.imageUrl}
+                                    alt={project.title ?? project.linkText ?? `Project ${idx + 2}`}
                                     fill
                                     className="object-cover group-hover:scale-110 transition-transform duration-400"
                                 />
@@ -93,7 +135,7 @@ export function Projects() {
                                     {project.description}
                                 </p>
                                 <h4 className="font-heading font-bold text-sm text-blue-600">
-                                    Project No {project.id}.
+                                    {project.linkText ?? project.title ?? `Project No ${String(idx + 2).padStart(2, '0')}.`}
                                 </h4>
                             </div>
                         </motion.div>
@@ -103,4 +145,3 @@ export function Projects() {
         </section>
     );
 }
-

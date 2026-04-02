@@ -3,41 +3,17 @@ import * as React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-    Search, 
-    Stethoscope, 
-    Activity, 
-    Syringe, 
-    Pill, 
-    Microscope, 
-    HeartPulse, 
-    ChevronDown, 
+import {
+    Search,
+    ChevronDown,
     ChevronUp,
     MessageCircle
 } from 'lucide-react';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
+import type { HealthService, ServiceCategory } from '@/types/cms';
 
-// Mocks
-const categories = [
-    { id: 1, name: 'Konsultasi dengan\nDokter Kami', iconPath: '/Layanan Kesehatan/Stethoscope.svg' },
-    { id: 2, name: 'Tindakan Medis', iconPath: '/Layanan Kesehatan/Procedures.svg' },
-    { id: 3, name: 'Suntik Vaksin', iconPath: '/Layanan Kesehatan/Insulin Pen.svg' },
-    { id: 4, name: 'Suntik Vitamin\nBooster', iconPath: '/Layanan Kesehatan/Suntik Vit Booster.svg' },
-    { id: 5, name: 'ICV', iconPath: '/Layanan Kesehatan/Hospital Bed With IV Machine.svg' },
-    { id: 6, name: 'Cek Laboratorium', iconPath: '/Layanan Kesehatan/Health Checkup.svg' },
-];
-
-const popularServices = [
-    { id: 1, title: 'Konsultasi Umum', desc: 'Konsultasi kesehatan menyeluruh dengan dokter yang berpengalaman.', price: 'Rp 75.000', orders: '1.250+ pemesanan' },
-    { id: 2, title: 'Cek Gula Darah', desc: 'Pemeriksaan rutin untuk memantau kadar glukosa dalam darah.', price: 'Rp 50.000', orders: '800+ pemesanan' },
-    { id: 3, title: 'Vaksin Influenza', desc: 'Perlindungan optimal dari virus flu musiman untuk Anda dan keluarga.', price: 'Rp 250.000', orders: '450+ pemesanan' },
-    { id: 4, title: 'Suntik Vitamin C', desc: 'Tingkatkan daya tahan tubuh dan imunitas dengan booster Vitamin C.', price: 'Rp 150.000', orders: '920+ pemesanan' },
-    { id: 5, title: 'Tes Kolesterol', desc: 'Pemeriksaan profil lipid lengkap untuk kesehatan jantung Anda.', price: 'Rp 85.000', orders: '600+ pemesanan' },
-    { id: 6, title: 'Konsultasi Gizi', desc: 'Atur pola makan sehat Anda bersama ahli gizi profesional kami.', price: 'Rp 100.000', orders: '300+ pemesanan' },
-];
-
-const faqs = [
+const STATIC_FAQS = [
     {
         q: 'Bagaimana cara memesan layanan kesehatan?',
         a: 'Anda dapat memesan layanan dengan mengklik tombol "Chat Admin" pada layanan yang diinginkan. Tim kami akan membantu Anda mengatur jadwal dan detail konsultasi.'
@@ -63,14 +39,31 @@ const faqs = [
 export default function LayananKesehatanPage() {
     const [openFaq, setOpenFaq] = React.useState<number | null>(0);
     const [searchTerm, setSearchTerm] = React.useState("");
+    const [services, setServices] = React.useState<HealthService[]>([]);
+    const [categories, setCategories] = React.useState<ServiceCategory[]>([]);
+    const [isLoading, setIsLoading] = React.useState(true);
+
+    React.useEffect(() => {
+        const cmsUrl = process.env.NEXT_PUBLIC_CMS_URL ?? 'http://localhost:3001';
+        Promise.all([
+            fetch(`${cmsUrl}/api/public/services`).then((r) => r.json()),
+            fetch(`${cmsUrl}/api/public/service-categories`).then((r) => r.json()),
+        ])
+            .then(([svcRes, catRes]) => {
+                if (svcRes.success) setServices(svcRes.data);
+                if (catRes.success) setCategories(catRes.data);
+            })
+            .catch(() => {})
+            .finally(() => setIsLoading(false));
+    }, []);
 
     const toggleFaq = (index: number) => {
         setOpenFaq(openFaq === index ? null : index);
     };
 
-    const filteredServices = popularServices.filter(svc => 
-        svc.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
-        svc.desc.toLowerCase().includes(searchTerm.toLowerCase())
+    const filteredServices = services.filter(svc =>
+        svc.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        svc.description.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     return (
@@ -83,9 +76,8 @@ export default function LayananKesehatanPage() {
                     <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-100/25 rounded-full blur-[130px] -translate-y-1/4 translate-x-1/4" />
                     <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-100/20 rounded-full blur-[110px] translate-y-1/4 -translate-x-1/4" />
                 </div>
-                {/* Subtle top/bottom fade bands */}
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-50/50 to-transparent pointer-events-none -z-0" />
-                
+
                 <div className="relative z-10 w-full">
                 {/* 1. Hero / Search Section */}
                 <section className="w-full pt-36 pb-16 px-4">
@@ -112,20 +104,22 @@ export default function LayananKesehatanPage() {
                         </div>
 
                         {/* Category Icons */}
-                        <div className="grid grid-cols-3 md:grid-cols-6 gap-6 md:gap-8 w-full max-w-[900px]">
-                            {categories.map(cat => (
-                                <div key={cat.id} className="flex flex-col items-center gap-3 cursor-pointer group">
-                                    <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#CEDFFF] border-2 border-transparent group-hover:border-[#98141F] transition-all flex items-center justify-center shadow-sm relative overflow-hidden">
-                                        <div className="relative w-8 h-8 md:w-10 md:h-10">
-                                            <Image src={cat.iconPath} alt={cat.name} fill className="object-contain" />
+                        {categories.length > 0 && (
+                            <div className="grid grid-cols-3 md:grid-cols-6 gap-6 md:gap-8 w-full max-w-[900px]">
+                                {categories.map(cat => (
+                                    <div key={cat.id} className="flex flex-col items-center gap-3 cursor-pointer group">
+                                        <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#CEDFFF] border-2 border-transparent group-hover:border-[#98141F] transition-all flex items-center justify-center shadow-sm relative overflow-hidden">
+                                            <div className="relative w-8 h-8 md:w-10 md:h-10">
+                                                <Image src={cat.iconPath} alt={cat.name} fill className="object-contain" />
+                                            </div>
                                         </div>
+                                        <span className="text-[12px] md:text-[13px] font-semibold text-[#1a1a1a] whitespace-pre-line leading-tight text-center">
+                                            {cat.name}
+                                        </span>
                                     </div>
-                                    <span className="text-[12px] md:text-[13px] font-semibold text-[#1a1a1a] whitespace-pre-line leading-tight text-center">
-                                        {cat.name}
-                                    </span>
-                                </div>
-                            ))}
-                        </div>
+                                ))}
+                            </div>
+                        )}
                     </div>
                 </section>
 
@@ -147,45 +141,59 @@ export default function LayananKesehatanPage() {
                         </Link>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {filteredServices.length > 0 ? (
-                            filteredServices.map((svc) => (
-                                <div key={svc.id} className="bg-white rounded-[16px] p-6 shadow-sm border border-gray-100 flex flex-col hover:shadow-md transition-shadow">
-                                    <div className="w-12 h-12 rounded-xl bg-[#EEF2FF] flex items-center justify-center mb-5 relative overflow-hidden">
-                                        <div className="relative w-7 h-7">
-                                            <Image src="/Layanan Kesehatan/Stethoscope.svg" alt="Service Icon" fill className="object-contain" />
+                    {isLoading ? (
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {[...Array(6)].map((_, i) => (
+                                <div key={i} className="bg-white rounded-[16px] p-6 shadow-sm border border-gray-100 h-[220px] animate-pulse" />
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {filteredServices.length > 0 ? (
+                                filteredServices.slice(0, 6).map((svc) => (
+                                    <div key={svc.id} className="bg-white rounded-[16px] p-6 shadow-sm border border-gray-100 flex flex-col hover:shadow-md transition-shadow">
+                                        <div className="w-12 h-12 rounded-xl bg-[#EEF2FF] flex items-center justify-center mb-5 relative overflow-hidden">
+                                            {svc.category?.iconPath ? (
+                                                <div className="relative w-7 h-7">
+                                                    <Image src={svc.category.iconPath} alt={svc.title} fill className="object-contain" />
+                                                </div>
+                                            ) : (
+                                                <div className="relative w-7 h-7">
+                                                    <Image src="/Layanan Kesehatan/Stethoscope.svg" alt="Service Icon" fill className="object-contain" />
+                                                </div>
+                                            )}
                                         </div>
-                                    </div>
-                                    <h3 className="font-heading font-bold text-[18px] text-[#1a1a1a] mb-2">
-                                        {svc.title}
-                                    </h3>
-                                    <p className="text-[13px] text-gray-600 mb-6 leading-relaxed flex-grow">
-                                        {svc.desc}
-                                    </p>
-                                    
-                                    <div className="flex items-center justify-between mt-auto mb-5">
-                                        <div className="flex items-center gap-1.5 text-[#98141F] font-bold text-[15px]">
-                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
-                                            {svc.price}
-                                        </div>
-                                        <span className="text-[12px] text-gray-500 font-medium">
-                                            {svc.orders}
-                                        </span>
-                                    </div>
+                                        <h3 className="font-heading font-bold text-[18px] text-[#1a1a1a] mb-2">
+                                            {svc.title}
+                                        </h3>
+                                        <p className="text-[13px] text-gray-600 mb-6 leading-relaxed flex-grow">
+                                            {svc.description}
+                                        </p>
 
-                                    <Link href={`/health-service/${svc.id}`} className="w-full">
-                                        <button className="w-full bg-[#98141F] hover:bg-[#7a1018] text-white font-semibold text-[14px] py-3 rounded-xl transition-colors">
-                                            Pesan Layanan
-                                        </button>
-                                    </Link>
+                                        <div className="flex items-center justify-between mt-auto mb-5">
+                                            <div className="flex items-center gap-1.5 text-[#98141F] font-bold text-[15px]">
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+                                                {svc.price}
+                                            </div>
+                                            <span className="text-[12px] text-gray-500 font-medium">
+                                                {svc.orders}
+                                            </span>
+                                        </div>
+
+                                        <Link href={`/health-service/${svc.id}`} className="w-full">
+                                            <button className="w-full bg-[#98141F] hover:bg-[#7a1018] text-white font-semibold text-[14px] py-3 rounded-xl transition-colors">
+                                                Pesan Layanan
+                                            </button>
+                                        </Link>
+                                    </div>
+                                ))
+                            ) : (
+                                <div className="col-span-full py-16 flex justify-center text-gray-500 font-medium">
+                                    Tidak ada layanan yang cocok dengan pencarian Anda.
                                 </div>
-                            ))
-                        ) : (
-                            <div className="col-span-full py-16 flex justify-center text-gray-500 font-medium">
-                                Tidak ada layanan yang cocok dengan pencarian Anda.
-                            </div>
-                        )}
-                    </div>
+                            )}
+                        </div>
+                    )}
                 </section>
 
                 {/* 3. FAQ Section */}
@@ -200,12 +208,12 @@ export default function LayananKesehatanPage() {
                     </div>
 
                     <div className="flex flex-col gap-3">
-                        {faqs.map((faq, index) => (
-                            <div 
-                                key={index} 
+                        {STATIC_FAQS.map((faq, index) => (
+                            <div
+                                key={index}
                                 className="bg-white rounded-lg border border-[#98141F] overflow-hidden transition-all duration-300"
                             >
-                                <button 
+                                <button
                                     onClick={() => toggleFaq(index)}
                                     className="w-full px-6 py-4 flex items-center justify-between text-left focus:outline-none"
                                 >
@@ -263,4 +271,3 @@ export default function LayananKesehatanPage() {
         </div>
     );
 }
-
